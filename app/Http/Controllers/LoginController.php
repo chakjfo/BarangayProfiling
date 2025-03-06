@@ -22,6 +22,7 @@ class LoginController extends Controller
             return redirect()->intended(default: '/');
         }
 
-        return redirect()->intended(default: '/register');
+        return back()->withErrors(['password' => 'Invalid credentials. Please try again.']);
+
     }
 }

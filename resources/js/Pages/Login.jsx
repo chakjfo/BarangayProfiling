@@ -97,6 +97,7 @@ export default function Login() {
 
                             <button
                                 type="submit"
+                                onClick={handleSubmit}
                                 disabled={processing}
                                 className={`w-full text-white ${
                                     processing ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'

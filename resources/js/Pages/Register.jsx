@@ -15,6 +15,12 @@ export default function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        if (data.password !== data.password_confirmation) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+
         post('/register');
     };
 

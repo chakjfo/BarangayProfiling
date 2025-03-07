@@ -8,8 +8,6 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
-        role: 'user',
-        terms: false,
     });
 
     const handleSubmit = (e) => {

@@ -1,20 +1,32 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\DashboardMiddleware;
+use Inertia\Inertia;
+
 
 Route::middleware('guest')->group(function () {
-   
+    Route::get('/', function () {
+        return Inertia::render('Index');
+    })->name('Index');
+
+
+    Route::get('/login', function () {
+        return Inertia::render('Login');
+    })->name('login');
+
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+    Route::get('/register', function () {
+        return Inertia::render('Register');
+    })->name('register');
+    
 });
 
 Route::middleware('auth')->group(function () {
-    
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->middleware(DashboardMiddleware::class)->name('dashboard');
 });

@@ -18,7 +18,7 @@ class LoginController extends Controller
             // Regenerate session to prevent session fixation attacks
             $request->session()->regenerate();
            
-            return redirect()->intended(default: '/');
+            return redirect()->intended(default: '/dashboard');
         }
 
         return back()->withErrors(['password' => 'Invalid credentials. Please try again.']);

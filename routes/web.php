@@ -3,16 +3,17 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckLoginData;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\IndexController;
+use App\Http\Middleware\DashboardMiddleware;
 use Inertia\Inertia;
 
 
 
-Route::get('/', [IndexController::class, 'Index']
-)->name('index');
+
+Route::get('/', function () {
+    return Inertia::render('Index');
+})->name('Index');
 
 
 Route::get('/login', function () {
@@ -31,6 +32,12 @@ Route::get('/register', function () {
 
 Route::post('/register', [RegisterController::class, 'register']
 )->name('register');
+
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(DashboardMiddleware::class)->name('dashboard');
+
 
 
 

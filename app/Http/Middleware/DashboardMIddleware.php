@@ -5,6 +5,10 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
+
 
 class DashboardMIddleware
 {
@@ -19,10 +23,14 @@ class DashboardMIddleware
             return redirect()->route('login');
         }
 
-        $token = $request->bearerToken();
 
-        // Log or use the token
-        echo 'YUP LOGGED IN';
+     
+      
+        $name = User::where('id', 7)->value('email');
+
+        dd($name);
+
+
 
 
         return $next($request);

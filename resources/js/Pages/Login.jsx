@@ -9,7 +9,7 @@ export default function Login() {
         remember: false,
     });
 
-    //TODO: FIX
+
     const handleSubmit = (e) => {
         e.preventDefault();
         post('/login');

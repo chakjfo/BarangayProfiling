@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLoginData;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\IndexController;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Index', );
-});
+
+
+Route::get('/', [IndexController::class, 'Index']
+)->name('index');
 
 
 Route::get('/login', function () {

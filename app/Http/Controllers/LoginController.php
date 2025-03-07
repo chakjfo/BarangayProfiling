@@ -17,7 +17,6 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
             // Regenerate session to prevent session fixation attacks
             $request->session()->regenerate();
-
            
             return redirect()->intended(default: '/');
         }

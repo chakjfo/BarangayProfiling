@@ -1,9 +1,11 @@
 import React from "react";
-import { Head } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react'
 
 
 
-export default function Dashboard({ name }) {
+
+export default function Dashboard() {
+    const { name } = usePage().props
 
     
     return (

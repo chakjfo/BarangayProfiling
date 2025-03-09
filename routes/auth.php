@@ -3,7 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\DashboardMiddleware;
+use App\Http\Controllers\DashboardController;
 use Inertia\Inertia;
 
 
@@ -26,7 +26,10 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->middleware(DashboardMiddleware::class)->name('dashboard');
+
+
+    Route::get('/dashboard', [DashboardController::class, 'show']
+    )->name('dashboard');
+
+
 });

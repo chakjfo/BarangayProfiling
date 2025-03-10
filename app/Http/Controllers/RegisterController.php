@@ -17,7 +17,6 @@ class RegisterController extends Controller
         // If validation passes, get the validated data:
         $validated = $request->validated();
 
-
         // Create the user:
         User::create([
             'name'     => $validated['name'],

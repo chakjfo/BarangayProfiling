@@ -4,6 +4,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Middleware\GetUserDataMiddleware;
 use Inertia\Inertia;
 
 
@@ -28,8 +29,10 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
 
 
-    Route::get('/dashboard', [DashboardController::class, 'show']
-    )->name('dashboard');
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    }
+    )->middleware(GetUserDataMiddleware::class)->name('dashboard');
 
 
 });

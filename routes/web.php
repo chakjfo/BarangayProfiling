@@ -40,6 +40,9 @@ Route::post('/register', [RegisterController::class, 'register']
 Route::get('/dashboard', [DashboardController::class, 'show']
 )->middleware(HandleInertiaRequests::class)->name('dashboard');
 
+Route::get('/registerAsResident', function () {
+    return Inertia::render('RegisterAsResident');
+})->name('registerAsResident');
 
 
 

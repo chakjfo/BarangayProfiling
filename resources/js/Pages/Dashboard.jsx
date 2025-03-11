@@ -15,9 +15,9 @@ export default function Dashboard() {
         <div className="w-64 dark:bg-gray-800 text-white p-6">
             <h2 className="text-2xl font-semibold mb-6">Barangay Profiling</h2>
             <ul>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Home</li>
+                <a href="/"><li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Home</li></a>
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Show Residents</li>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Register As Resident</li>
+                <a href="/registerAsResident"><li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Register As Resident</li></a>
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Logout</li>
             </ul>
         </div>

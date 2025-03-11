@@ -44,6 +44,11 @@ Route::get('/registerAsResident', function () {
     return Inertia::render('RegisterAsResident');
 })->name('registerAsResident');
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+});
+
 
 
 require __DIR__.'/auth.php';

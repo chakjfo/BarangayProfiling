@@ -18,7 +18,7 @@ export default function Dashboard() {
                 <a href="/"><li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Home</li></a>
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Show Residents</li>
                 <a href="/registerAsResident"><li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Register As Resident</li></a>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Logout</li>
+                <a href="/logout"><li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Logout</li></a>
             </ul>
         </div>
 

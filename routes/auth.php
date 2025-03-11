@@ -36,5 +36,11 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('RegisterAsResident');
     })->name('registerAsResident');
 
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect('/');
+    });
+    
+
 
 });

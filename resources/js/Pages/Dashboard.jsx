@@ -5,9 +5,10 @@ import { usePage } from '@inertiajs/react'
 
 
 export default function Dashboard() {
-    const { auth } = usePage().props;
+    const { auth, userCount } = usePage().props;
 
-    
+   
+  
     return (
         <div className="flex h-screen">
         {/* Sidebar */}
@@ -34,9 +35,9 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Card 1: Total Population */}
                 <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h4 className="text-xl font-semibold mb-4">Total Population</h4>
-                    <p className="text-gray-700">Current total population of the barangay.</p>
-                    <div className="mt-4 text-3xl font-bold">12,345</div>
+                    <h4 className="text-xl font-semibold mb-4">Site users</h4>
+                    <p className="text-gray-700">Current total site users of this site.</p>
+                    <div className="mt-4 text-3xl font-bold">{userCount}</div>
                 </div>
 
                 {/* Card 2: Registered Residents */}

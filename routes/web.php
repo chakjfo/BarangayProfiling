@@ -37,9 +37,7 @@ Route::post('/register', [RegisterController::class, 'register']
 
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-}
+Route::get('/dashboard', [DashboardController::class, 'show']
 )->middleware(HandleInertiaRequests::class)->name('dashboard');
 
 

@@ -16,10 +16,8 @@ export default function Dashboard() {
             <h2 className="text-2xl font-semibold mb-6">Barangay Profiling</h2>
             <ul>
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Home</li>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Population</li>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Residents</li>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Services</li>
-                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Statistics</li>
+                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Show Residents</li>
+                <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Register As Resident</li>
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Logout</li>
             </ul>
         </div>
@@ -44,14 +42,14 @@ export default function Dashboard() {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h4 className="text-xl font-semibold mb-4">Registered Residents</h4>
                     <p className="text-gray-700">Number of registered residents in the barangay.</p>
-                    <div className="mt-4 text-3xl font-bold">10,234</div>
+                    <div className="mt-4 text-3xl font-bold">None</div>
                 </div>
 
                 {/* Card 3: Active Services */}
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h4 className="text-xl font-semibold mb-4">Active Services</h4>
                     <p className="text-gray-700">Available services for residents.</p>
-                    <div className="mt-4 text-3xl font-bold">8</div>
+                    <div className="mt-4 text-3xl font-bold">None</div>
                 </div>
             </div>
 

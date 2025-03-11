@@ -5,7 +5,7 @@ import { usePage } from '@inertiajs/react'
 
 
 export default function Dashboard() {
-    const { user } = usePage().props;
+    const { auth } = usePage().props;
 
     
     return (
@@ -27,7 +27,7 @@ export default function Dashboard() {
         <div className="flex-1 bg-gray-100 p-6">
             {/* Top Navigation */}
             <div className="dark:bg-gray-800 text-white p-4 rounded-lg shadow-md mb-6">
-                <h3 className="text-lg font-semibold">Hello {user.name}. Welcome to Dashboard</h3>
+                <h3 className="text-lg font-semibold">Hello {auth.name}. Welcome to Dashboard</h3>
             </div>
 
             {/* Main Dashboard Content */}

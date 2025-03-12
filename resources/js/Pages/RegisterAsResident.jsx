@@ -1,66 +1,71 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useForm } from '@inertiajs/react';
+import { PersonalInformation } from "./Components/PersonalInformation";
+import { DemographicInformation } from "./Components/DemographicInformation";
+
 
 export default function RegisterAsResident() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: "",
-      });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted", formData);
+  };
+
+  const { data, setData, post, processing, errors } = useForm({
+          first_name: '',
+          last_name: '',
+          middle_name: '',
+          name_extension: '',
+
+          gender: '',
+          birthDate: '',
+          religion: '',
+          ethnicity: '',
+    });
+
+    const [formData, setFormData] = useState([
+      <PersonalInformation data={data} setData={setData} />,
+      <DemographicInformation data={data} setData={setData} />
+    ]);
+  
+    const [formIndex, setFormIndex] = useState(0);
+
+    const [currentForm, setCurrentForm] = useState(formData[formIndex]);
+
+    useEffect(() => {
+      setCurrentForm(formData[formIndex]);
+    }, [formIndex]);
+
+
+    const changeFormIndex = (number) => {
+      if (number >= formData.length|| number < 0) {
+        return;
+      }
+      setFormIndex(number);
+    }
+
+
+  return (
+    <div className="flex justify-center items-center min-h-screen flex-col bg-gray-100">
+      <form className="bg-white p-6 rounded-lg shadow-md w-96" onSubmit={handleSubmit}>
+        {currentForm}
+      </form>
+      
+      <div className="grid grid-cols-2 rid-row-1 justify-items-center gap-5 mt-4">
+        <button className="flex w-40 items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+          onClick={() => changeFormIndex(formIndex - 1)}>
+          Back
+        </button>
+
+        <button className="flex w-40 items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+          onClick={() => {changeFormIndex(formIndex + 1), console.log(data)}}>
+          Next
+        </button>
+
+      </div>
+
+
+    </div>
     
-      const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-      };
-    
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form submitted", formData);
-      };
-    
-      return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-          <form 
-            className="bg-white p-6 rounded-lg shadow-md w-96"
-            onSubmit={handleSubmit}
-          >
-            <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
-            <label className="block mb-2">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-2 border rounded mb-4"
-              required
-            />
-    
-            <label className="block mb-2">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-2 border rounded mb-4"
-              required
-            />
-    
-            <label className="block mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full p-2 border rounded mb-4"
-              required
-            />
-    
-            <button
-              type="submit"
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-            >
-              Register
-            </button>
-          </form>
-        </div>
       );
 }

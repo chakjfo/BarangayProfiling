@@ -1,15 +1,13 @@
-import { Civil_Status } from "../PageHelper/RegisterAsResidentData"
+import { Religions, Ethnicities, Civil_Status } from "../PageHelper/RegisterAsResidentData";
 import { useEffect, useState } from "react";
 
-export function DemographicInformation({ data, setData }) {
-    const [birthDate, setBirthDate] = useState("2004-11-11");
-    const [age, setAge] = useState(0);
-    const [civilStatus, setCivilStatus] = useState('Single');
-    const [religion, setReligion] = useState("");
 
-    const dataChange = (type, data) => {
-        setData(type, data)
-    }
+export function DemographicInformation({ data, setData }) {
+    const [birthDate, setBirthDate] = useState("");
+    const [age, setAge] = useState(0);
+    const [civilStatus, setCivilStatus] = useState('');
+    const [religion, setReligion] = useState("");
+    const [ethnicity, setEthnicity] = useState("");
 
     const calculatedAge = () => {
         const birth = new Date(birthDate);
@@ -38,7 +36,6 @@ export function DemographicInformation({ data, setData }) {
             required
             max={new Date().toISOString().split('T')[0]}
         />
-
             
         <label className="block mb-2">Age</label>
         <input
@@ -52,36 +49,46 @@ export function DemographicInformation({ data, setData }) {
 
         <label className="block mb-2">Civil Status</label>
         <select
-            name="gender"
+            name="Civil Status"
             value={civilStatus} 
-            onChange={(e) => {dataChange('gender', e.target.value), setCivilStatus(e.target.value)}} 
+            onChange={(e) => {setData('gender', e.target.value), setCivilStatus(e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
-        >
+        >   
+            <option value="" disabled>-- Please Select --</option>
             {Civil_Status.map((status, index) => (
                 <option key={index} value={status}>{status}</option>
             ))}
         </select>
 
         <label className="block mb-2">Religion</label>
-        <input
-            type="text"
-            name="Last Name"
+
+        <select
+            name="Religion"
             value={religion} 
-            onChange={(e) => {dataChange('religion', e.target.value), setReligion(e.target.value)}} 
+            onChange={(e) => {setData('religion', e.target.value), setReligion(e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
-        />
+        >
+            <option value="" disabled>-- Please Select --</option>
+            {Religions.map((religion, index) => (
+                    <option key={index} value={religion}>{religion}</option>
+            ))}
+        </select>
 
         <label className="block mb-2">Ethnicity</label>
-        <input
-            type="text"
-            name="Last Name"
-            value={data.ethnicity} 
-            onChange={(e) => setData('last_name', e.target.value)} 
+        <select
+            name="ethnicity"
+            value={ethnicity} 
+            onChange={(e) => {setData('ethnicity', e.target.value), setEthnicity(e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
-        />
+        >   
+            <option value="" disabled>-- Please Select --</option>
+            {Ethnicities.map((ethnicity, index) => (
+                <option key={index} value={ethnicity}>{ethnicity}</option>
+            ))}
+        </select>
 
       </>
     )

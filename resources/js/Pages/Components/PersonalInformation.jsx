@@ -1,6 +1,12 @@
-
+import { useEffect, useState } from "react";
 
 export function PersonalInformation({ data, setData }) {
+    const [lastName, setLastName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [middleName, setMiddleName] = useState("");
+    const [nameExtension, setNameExtension] = useState("");
+    const [gender, setGender] = useState("")
+
     return (
       <> 
         <h2 className="text-2xl font-bold mb-4 text-center">Personal Information</h2>
@@ -8,8 +14,8 @@ export function PersonalInformation({ data, setData }) {
             <input
                 type="text"
                 name="Last Name"
-                value={data.last_name} 
-                onChange={(e) => setData('last_name', e.target.value)} 
+                value={lastName} 
+                onChange={(e) => {setData('last_name', e.target.value), setLastName(e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -18,8 +24,8 @@ export function PersonalInformation({ data, setData }) {
             <input
                 type="text"
                 name="First Name"
-                value={data.first_name} 
-                onChange={(e) => setData('first_name', e.target.value)} 
+                value={firstName} 
+                onChange={(e) => {setData('first_name', e.target.value), setFirstName(e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -28,8 +34,8 @@ export function PersonalInformation({ data, setData }) {
             <input
                 type="text"
                 name="Middle name"
-                value={data.middle_name} 
-                onChange={(e) => setData('middle_name', e.target.value)} 
+                value={middleName} 
+                onChange={(e) => {setData('middle_name', e.target.value), setMiddleName(e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -38,21 +44,21 @@ export function PersonalInformation({ data, setData }) {
             <input
                 type="text"
                 name="Name extension"
-                value={data.name_extension} 
-                onChange={(e) => setData('name_extension', e.target.value)} 
+                value={nameExtension} 
+                onChange={(e) => {setData('name_extension', e.target.value), setNameExtension(e.target.value)}}
                 className="w-full p-2 border rounded mb-4"
-                required
             />
 
             <label className="block mb-2">Gender</label>
             <select
                 name="gender"
-                value={data.gender} 
-                onChange={(e) => setData('gender', e.target.value)} 
+                value={gender} 
+                onChange={(e) => {setData('gender', e.target.value), setGender(e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >
-                <option value="">Select Gender</option>
+
+                <option value="" disabled>-- Please Select --</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>

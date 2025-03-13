@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from '@inertiajs/react';
 import { PersonalInformation } from "./Components/PersonalInformation";
 import { DemographicInformation } from "./Components/DemographicInformation";
+import { FamilyDetailsInformation } from "./Components/FamilyDetailsInformation"
 
 
 export default function RegisterAsResident() {
@@ -21,11 +22,18 @@ export default function RegisterAsResident() {
           birthDate: '',
           religion: '',
           ethnicity: '',
+
+          personType: '',
+          familyRelations: '',
+          bloodType: '',
+          houseOccupancy: '',
+          lotOccupancy: '',
     });
 
     const [formData, setFormData] = useState([
       <PersonalInformation data={data} setData={setData} />,
-      <DemographicInformation data={data} setData={setData} />
+      <DemographicInformation data={data} setData={setData} />,
+      <FamilyDetailsInformation data={data} setData={setData} />
     ]);
   
     const [formIndex, setFormIndex] = useState(0);

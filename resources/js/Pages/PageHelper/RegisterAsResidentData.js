@@ -76,5 +76,54 @@ const Ethnicities  = [
     "Jewish (Sephardic)", "Jewish (Mizrahi)", "Dravidian", "Celtic", "Slavic", "Anglo-Saxon", "Scandinavian"
 ]
 
+const familyRelationOptions = [
+    "Father",
+    "Mother",
+    "Son",
+    "Daughter",
+    "Brother",
+    "Sister",
+    "Husband",
+    "Wife",
+    "Grandfather",
+    "Grandmother",
+    "Grandson",
+    "Granddaughter",
+    "Uncle",
+    "Aunt",
+    "Nephew",
+    "Niece",
+    "Cousin",
+    "Stepfather",
+    "Stepmother",
+    "Stepbrother",
+    "Stepsister",
+    "Father-in-law",
+    "Mother-in-law",
+    "Brother-in-law",
+    "Sister-in-law"
+  ];
 
-export { Status_Of_Employment, Civil_Status, Religions, Ethnicities  }
+const houseOccupancyTypes = [
+    "Owner",
+    "Renter",
+    "Landlord",
+    "Leaseholder",
+    "Occupant",
+    "Family Member",
+    "Guest",
+    "Subtenant",
+    "Caretaker",
+    "Lodger",
+    "House Sitter",
+    "Temporary Resident",
+    "Shared Housing Resident",
+    "Government-Assisted Resident"
+];
+
+const lotOccupancyData = ["Owner", "Co-owner", "Tenant", "Guest", "Occupant"];
+
+export { Status_Of_Employment, Civil_Status, Religions, Ethnicities, familyRelationOptions,
+    houseOccupancyTypes, lotOccupancyData,
+
+  }

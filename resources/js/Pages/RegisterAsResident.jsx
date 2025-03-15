@@ -1,12 +1,11 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from '@inertiajs/react';
-// TODO: barrel these
-import { PersonalInformation } from "./Components/PersonalInformation";
-import { DemographicInformation } from "./Components/DemographicInformation";
-import { FamilyDetailsInformation } from "./Components/FamilyDetailsInformation"
-import { EducationAndEmploymentInformation } from "./Components/EducationAndEmploymentInformation";
 
+import { 
+  PersonalInformation, DemographicInformation, FamilyDetailsInformation, 
+  EducationAndEmploymentInformation 
+} from "./PageHelper/InformationComponentBarrel";
 
 export default function RegisterAsResident() {
   const handleSubmit = (e) => {

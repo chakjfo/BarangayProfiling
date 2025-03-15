@@ -1,9 +1,11 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from '@inertiajs/react';
+// TODO: barrel these
 import { PersonalInformation } from "./Components/PersonalInformation";
 import { DemographicInformation } from "./Components/DemographicInformation";
 import { FamilyDetailsInformation } from "./Components/FamilyDetailsInformation"
+import { EducationAndEmploymentInformation } from "./Components/EducationAndEmploymentInformation";
 
 
 export default function RegisterAsResident() {
@@ -28,12 +30,20 @@ export default function RegisterAsResident() {
           bloodType: '',
           houseOccupancy: '',
           lotOccupancy: '',
+
+
+          educationalAttainment: '',
+          educationStatus: '',
+          occupation: '',
+          statusOfEmployment: '',
+          monthlyGrossIncome: '',
     });
 
     const [formData, setFormData] = useState([
       <PersonalInformation data={data} setData={setData} />,
       <DemographicInformation data={data} setData={setData} />,
-      <FamilyDetailsInformation data={data} setData={setData} />
+      <FamilyDetailsInformation data={data} setData={setData} />,
+      <EducationAndEmploymentInformation data={data} setData={setData} />
     ]);
   
     const [formIndex, setFormIndex] = useState(0);

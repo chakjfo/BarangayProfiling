@@ -1,129 +1,62 @@
 const Status_Of_Employment = [
-    "Employed full-time",
-    "Employed part-time",
-    "Self-employed",
-    "Unemployed",
-    "Retired",
-    "Student",
-    "Homemaker",
-    "Freelancer/Contractor",
-    "Seasonal Worker",
-    "Disabled",
-    "Underemployed",
-    "On leave",
-    "Volunteering",
-    "Intern/Apprentice",
-    "Temporarily laid off"
+    "Employed full-time", "Employed part-time", "Self-employed", "Unemployed", "Retired", "Student", 
+    "Homemaker", "Freelancer/Contractor", "Seasonal Worker", "Disabled", "Underemployed", "On leave", 
+    "Volunteering", "Intern/Apprentice", "Temporarily laid off"
 ];
 
 const Civil_Status = [
-    "Single",
-    "Married",
-    "Civil Partnership/Civil Union",
-    "Divorced",
-    "Separated",
-    "Widowed",
-    "Annulled Marriage",
-    "Domestic Partnership",
-    "Common-Law Marriage",
-    "Registered Partnership",
-    "Unmarried Partnership",
-    "Engaged",
+    "Single", "Married", "Civil Partnership", "Divorced", "Separated", "Widowed", "Annulled Marriage", 
+    "Domestic Partnership", "Common-Law Marriage", "Registered Partnership", "Unmarried Partnership", "Engaged"
 ];
 
 const Religions = [
     "Christianity", "Islam", "Hinduism", "Buddhism", "Sikhism", "Judaism", "Bahá'í Faith", "Jainism", "Shinto", "Taoism",
-    "Zoroastrianism", "Confucianism", "Cao Dai", "Tenrikyo", "Rastafarianism", "Scientology", "Animism", "Paganism", "Druze", "Gnosticism",
-    "Hare Krishna (ISKCON)", "Voodoo", "Santería", "Candomblé", "Hellenism", "Asatru", "Wicca", "Heathenry", "Mandaeism", "Eckankar",
-    "New Thought", "Theosophy", "Anthroposophy", "Rosicrucianism", "Satanism", "Luciferianism", "Deism", "Unitarian Universalism",
-    "Agnosticism", "Atheism", "Pantheism", "Panentheism", "Spiritualism", "Shamanism", "Druidry", "Native American Religions",
-    "Australian Aboriginal Religions", "African Traditional Religions", "Aztec Religion", "Mayan Religion", "Inca Religion",
-    "Ancient Egyptian Religion", "Babylonian Religion", "Sumerian Religion", "Zuni Religion", "Cherokee Religion", "Navajo Religion",
-    "Cheondoism", "Korean Shamanism", "Seicho-No-Ie", "Ryukyuan Religion", "Ayyavazhi", "Mithraism", "Manichaeism", "Mazdakism",
-    "Yazidism", "Yarsanism", "Alevism", "Chondogyo", "Bön", "Falun Gong", "Shinshukyo", "Osho Neo-Sannyas", "Subud", "Eckankar",
-    "Urantianism", "Pastafarianism", "Raelianism", "Church of the SubGenius", "Discordianism", "Temple of Set", "Thelema",
-    "Laveyan Satanism", "Christian Science", "Messianic Judaism", "Black Hebrew Israelites", "Kabbalah", "Chassidic Judaism",
-    "Reform Judaism", "Orthodox Judaism", "Zen Buddhism", "Theravada Buddhism", "Mahayana Buddhism", "Pure Land Buddhism",
-    "Nichiren Buddhism", "Shingon Buddhism", "Tibetan Buddhism", "Soka Gakkai", "Christian Mysticism", "Gnostic Christianity",
-    "Evangelical Christianity", "Eastern Orthodoxy", "Protestantism", "Catholicism", "Mormonism", "Jehovah’s Witnesses", "Seventh-day Adventists"
-]
+    "Zoroastrianism", "Confucianism", "Cao Dai", "Tenrikyo", "Rastafarianism", "Scientology", "Animism", "Paganism", 
+    "Druze", "Gnosticism", "Voodoo", "Santería", "Candomblé", "Hellenism", "Asatru", "Wicca", "Heathenry", "Mandaeism",
+    "Eckankar", "New Thought", "Theosophy", "Anthroposophy", "Rosicrucianism", "Satanism", "Luciferianism", "Deism", 
+    "Unitarian Universalism", "Agnosticism", "Atheism", "Pantheism", "Panentheism", "Spiritualism", "Shamanism", "Druidry",
+    "Native American Religions", "African Traditional Religions", "Aztec Religion", "Mayan Religion", "Inca Religion",
+    "Ancient Egyptian Religion", "Babylonian Religion", "Sumerian Religion", "Cheondoism", "Falun Gong", "Thelema", 
+    "Laveyan Satanism", "Christian Science", "Messianic Judaism", "Reform Judaism", "Orthodox Judaism", "Zen Buddhism", 
+    "Theravada Buddhism", "Mahayana Buddhism", "Tibetan Buddhism", "Evangelical Christianity", "Eastern Orthodoxy", 
+    "Protestantism", "Catholicism", "Mormonism", "Jehovah’s Witnesses", "Seventh-day Adventists"
+];
 
-const Ethnicities  = [
-
-    "Hausa", "Yoruba", "Igbo", "Zulu", "Xhosa", "Akan", "Amhara", "Tigray", "Somali", "Oromo",
-    "Berber", "Tuareg", "Himba", "San", "Shona", "Ndebele", "Bantu", "Dinka", "Nuer", "Maasai",
-    
-    "English", "Scottish", "Irish", "Welsh", "German", "French", "Italian", "Spanish", "Portuguese",
-    "Dutch", "Flemish", "Swedish", "Norwegian", "Danish", "Finnish", "Polish", "Czech", "Slovak", "Hungarian",
-    "Greek", "Romanian", "Bulgarian", "Serbian", "Croatian", "Bosniak", "Slovenian", "Albanian", "Macedonian", "Ukrainian",
-    "Russian", "Belarusian", "Lithuanian", "Latvian", "Estonian",
-    
-    "Han Chinese", "Tibetan", "Uighur", "Mongol", "Korean", "Japanese", "Ainu", "Ryukyuan", "Vietnamese",
-    "Khmer", "Thai", "Lao", "Burmese", "Shan", "Karen", "Hmong", "Filipino", "Malay", "Javanese", "Sundanese",
-    "Balinese", "Bugis", "Bajau", "Torajan", "Batak", "Minangkabau", "Tamil", "Telugu", "Malayali", "Bengali",
-    "Punjabi", "Sindhi", "Gujarati", "Marathi", "Rajput", "Pashtun", "Baloch", "Hazara", "Tajik", "Uzbek",
-    "Kazakh", "Kyrgyz", "Turkmen", "Uighur",
-    
-    "Apache", "Navajo", "Cherokee", "Sioux", "Inuit", "Maya", "Aztec", "Quechua", "Aymara", "Guarani",
-    "Mapuche", "Taino", "Carib", "Yanomami", "Kayapo", "Hopi", "Lakota", "Blackfoot", "Iroquois", "Mohawk",
-    
-    "Arab", "Persian", "Kurd", "Turk", "Armenian", "Azerbaijani", "Jewish", "Assyrian", "Chaldean",
-    "Bedouin", "Druze", "Mandean", "Samaritan",
-    
-    "Hawaiian", "Samoan", "Tongan", "Fijian", "Maori", "Papuan", "Chamorro", "Melanesian", "Micronesian", "Polynesian",
-    
-    "Afro-Caribbean", "African American", "Latino", "Hispanic", "Creole", "Basque", "Romani", "Jewish (Ashkenazi)",
-    "Jewish (Sephardic)", "Jewish (Mizrahi)", "Dravidian", "Celtic", "Slavic", "Anglo-Saxon", "Scandinavian"
-]
+const Ethnicities = [
+    "Hausa", "Yoruba", "Igbo", "Zulu", "Xhosa", "Akan", "Amhara", "Tigray", "Somali", "Oromo", "Berber", "Tuareg", 
+    "San", "Shona", "Bantu", "Dinka", "Maasai", "English", "Scottish", "Irish", "Welsh", "German", "French", "Italian",
+    "Spanish", "Dutch", "Swedish", "Norwegian", "Polish", "Czech", "Hungarian", "Greek", "Romanian", "Serbian", "Croatian", 
+    "Ukrainian", "Russian", "Lithuanian", "Estonian", "Han Chinese", "Tibetan", "Uighur", "Mongol", "Korean", "Japanese", 
+    "Vietnamese", "Khmer", "Thai", "Filipino", "Malay", "Tamil", "Punjabi", "Pashtun", "Kazakh", "Kyrgyz", "Turkmen", 
+    "Navajo", "Cherokee", "Aztec", "Quechua", "Guarani", "Mapuche", "Arab", "Persian", "Kurd", "Turk", "Jewish", "Druze", 
+    "Samaritan", "Hawaiian", "Samoan", "Fijian", "Maori", "Afro-Caribbean", "African American", "Latino", "Hispanic", "Creole"
+];
 
 const familyRelationOptions = [
-    "Father",
-    "Mother",
-    "Son",
-    "Daughter",
-    "Brother",
-    "Sister",
-    "Husband",
-    "Wife",
-    "Grandfather",
-    "Grandmother",
-    "Grandson",
-    "Granddaughter",
-    "Uncle",
-    "Aunt",
-    "Nephew",
-    "Niece",
-    "Cousin",
-    "Stepfather",
-    "Stepmother",
-    "Stepbrother",
-    "Stepsister",
-    "Father-in-law",
-    "Mother-in-law",
-    "Brother-in-law",
-    "Sister-in-law"
-  ];
+    "Father", "Mother", "Son", "Daughter", "Brother", "Sister", "Husband", "Wife", "Grandfather", "Grandmother", 
+    "Grandson", "Granddaughter", "Uncle", "Aunt", "Nephew", "Niece", "Cousin", "Stepfather", "Stepmother", "Stepbrother", 
+    "Stepsister", "Father-in-law", "Mother-in-law", "Brother-in-law", "Sister-in-law"
+];
 
 const houseOccupancyTypes = [
-    "Owner",
-    "Renter",
-    "Landlord",
-    "Leaseholder",
-    "Occupant",
-    "Family Member",
-    "Guest",
-    "Subtenant",
-    "Caretaker",
-    "Lodger",
-    "House Sitter",
-    "Temporary Resident",
-    "Shared Housing Resident",
-    "Government-Assisted Resident"
+    "Owner", "Renter", "Landlord", "Leaseholder", "Occupant", "Family Member", "Guest", "Subtenant", "Caretaker", 
+    "Lodger", "House Sitter", "Temporary Resident", "Shared Housing Resident", "Government-Assisted Resident"
 ];
 
 const lotOccupancyData = ["Owner", "Co-owner", "Tenant", "Guest", "Occupant"];
 
-export { Status_Of_Employment, Civil_Status, Religions, Ethnicities, familyRelationOptions,
-    houseOccupancyTypes, lotOccupancyData,
+const educationLevels = [
+    "No Formal Education", "Some Elementary School", "Elementary Graduate", "Some High School", "High School Graduate", 
+    "Some College", "Associate Degree", "Bachelor’s Degree", "Some Graduate School", "Master’s Degree", "Doctorate (PhD)", 
+    "Professional Degree", "Technical/Vocational Training", "GED", "Postdoctoral Studies"
+];
 
-  }
+const employmentStatuses = [
+    "Employed Full-Time", "Employed Part-Time", "Self-Employed", "Unemployed, Looking", "Unemployed, Not Looking", 
+    "Student", "Retired", "Homemaker", "Seasonal Worker", "Freelancer", "Intern", "Apprentice", "Unable to Work"
+];
+
+export { 
+    Status_Of_Employment, Civil_Status, Religions, Ethnicities, familyRelationOptions, houseOccupancyTypes, 
+    lotOccupancyData, educationLevels, employmentStatuses 
+};

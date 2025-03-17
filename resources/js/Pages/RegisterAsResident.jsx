@@ -18,11 +18,12 @@ export default function RegisterAsResident() {
           last_name: '',
           middle_name: '',
           name_extension: '',
-
           gender: '',
+
           birthDate: '',
           religion: '',
           ethnicity: '',
+          civilStatus: '',
 
           personType: '',
           familyRelations: '',
@@ -42,11 +43,11 @@ export default function RegisterAsResident() {
     });
 
     const [formData, setFormData] = useState([
-      <PersonalInformation data={data} setData={setData} />,
-      <DemographicInformation data={data} setData={setData} />,
-      <FamilyDetailsInformation data={data} setData={setData} />,
-      <EducationAndEmploymentInformation data={data} setData={setData} />,
-      <ResidencyAndDurationInformation data={data} setData={setData} />
+      <PersonalInformation setData={setData} />,
+      <DemographicInformation setData={setData} />,
+      <FamilyDetailsInformation setData={setData} />,
+      <EducationAndEmploymentInformation setData={setData} />,
+      <ResidencyAndDurationInformation setData={setData} />
     ]);
   
     const [formIndex, setFormIndex] = useState(0);
@@ -79,7 +80,7 @@ export default function RegisterAsResident() {
         </button>
 
         <button className="flex w-40 items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
-          onClick={() => {changeFormIndex(formIndex + 1), console.log(data)}}>
+          onClick={() => {changeFormIndex(formIndex + 1)}}>
           Next
         </button>
 

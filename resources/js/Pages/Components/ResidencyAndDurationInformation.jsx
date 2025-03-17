@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { formatToCurrency } from "../PageHelper/InformationFormatter";
 
 
-export function ResidencyAndDurationInformation({ data, setData }) {
+export function ResidencyAndDurationInformation({ setData }) {
     const [yearStarted, setYearStarted] = useState('');
     const [pension, setPension] = useState('₱0.00');
     const [isPregnant, setIsPregnant] = useState('')
+
+    useEffect(() => {
+        console.log(data)
+    })
+    
    
     return (
         <>

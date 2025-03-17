@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function PersonalInformation({ data, setData }) {
+export function PersonalInformation({ setData }) {
     const [lastName, setLastName] = useState("");
     const [firstName, setFirstName] = useState("");
     const [middleName, setMiddleName] = useState("");
@@ -59,8 +59,8 @@ export function PersonalInformation({ data, setData }) {
             >
 
                 <option value="" disabled>-- Please Select --</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
             </select>
 
         </>

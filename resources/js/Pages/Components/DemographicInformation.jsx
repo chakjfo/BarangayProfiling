@@ -2,7 +2,7 @@ import { Religions, Ethnicities, Civil_Status } from "../PageHelper/RegisterAsRe
 import { useEffect, useState } from "react";
 
 
-export function DemographicInformation({ data, setData }) {
+export function DemographicInformation({ setData }) {
     const [birthDate, setBirthDate] = useState("");
     const [age, setAge] = useState(0);
     const [civilStatus, setCivilStatus] = useState('');
@@ -51,7 +51,7 @@ export function DemographicInformation({ data, setData }) {
         <select
             name="Civil Status"
             value={civilStatus} 
-            onChange={(e) => {setData('gender', e.target.value), setCivilStatus(e.target.value)}} 
+            onChange={(e) => {setData('civilStatus', e.target.value), setCivilStatus(e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
         >   

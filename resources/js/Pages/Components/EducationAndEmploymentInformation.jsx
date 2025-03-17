@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { educationLevels, employmentStatuses } from "../PageHelper/RegisterAsResidentData";
 import { formatToCurrency } from "../PageHelper/InformationFormatter";
 
-export function EducationAndEmploymentInformation({ data, setData }) {
+export function EducationAndEmploymentInformation({ setData }) {
     const [educationStatus, setEducationStatus] = useState("");
     const [educationalAttainment, setEducationalAttainment] = useState("");
     const [Occupation, setOccupation] = useState("");

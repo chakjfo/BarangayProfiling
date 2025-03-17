@@ -2,7 +2,7 @@ import { useState } from "react";
 import { familyRelationOptions, houseOccupancyTypes, lotOccupancyData } from "../PageHelper/RegisterAsResidentData";
 
 
-export function FamilyDetailsInformation({ data, setData }) {
+export function FamilyDetailsInformation({ setData }) {
     const [personType, setPersonType] = useState("");
     const [familyRelations, setFamilyRelations] = useState("");
     const [bloodType, setBloodType] = useState("");

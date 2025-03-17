@@ -1,25 +1,14 @@
 
 import { useEffect, useState } from "react";
 import { educationLevels, employmentStatuses } from "../PageHelper/RegisterAsResidentData";
+import { formatToCurrency } from "../PageHelper/InformationFormatter";
 
 export function EducationAndEmploymentInformation({ data, setData }) {
     const [educationStatus, setEducationStatus] = useState("");
     const [educationalAttainment, setEducationalAttainment] = useState("");
     const [Occupation, setOccupation] = useState("");
     const [statusOfEmployment, setStatusOfEmployment] = useState("");
-    const [income, setIncome] = useState("");
-
-    const handleIncomeChange = (e) => {
-        let value = e.target.value.replace(/[^0-9]/g, "");
-        let formattedValue = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "PHP",
-        }).format(value / 100);
-    
-        setIncome(formattedValue);
-        setData("monthlyGrossIncome", formattedValue);
-      };
-   
+    const [income, setIncome] = useState("₱0.00");
 
     return (
         <>
@@ -86,7 +75,11 @@ export function EducationAndEmploymentInformation({ data, setData }) {
                 type="text"
                 name="Monthly Gross Income"
                 value={income}
-                onChange={handleIncomeChange}
+                onChange={(e) => {
+                    const formattedValue = formatToCurrency(e.target.value)
+                    setIncome(formattedValue);
+                    setData("Pension", formattedValue);
+                }}
                 className="w-full p-2 border rounded mb-4"
                 required
             />

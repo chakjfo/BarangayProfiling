@@ -4,7 +4,7 @@ import { useForm } from '@inertiajs/react';
 
 import { 
   PersonalInformation, DemographicInformation, FamilyDetailsInformation, 
-  EducationAndEmploymentInformation 
+  EducationAndEmploymentInformation, ResidencyAndDurationInformation 
 } from "./PageHelper/InformationComponentBarrel";
 
 export default function RegisterAsResident() {
@@ -36,13 +36,17 @@ export default function RegisterAsResident() {
           occupation: '',
           statusOfEmployment: '',
           monthlyGrossIncome: '',
+
+          yearStartedStaying: '',
+          Pension: '',
     });
 
     const [formData, setFormData] = useState([
       <PersonalInformation data={data} setData={setData} />,
       <DemographicInformation data={data} setData={setData} />,
       <FamilyDetailsInformation data={data} setData={setData} />,
-      <EducationAndEmploymentInformation data={data} setData={setData} />
+      <EducationAndEmploymentInformation data={data} setData={setData} />,
+      <ResidencyAndDurationInformation data={data} setData={setData} />
     ]);
   
     const [formIndex, setFormIndex] = useState(0);

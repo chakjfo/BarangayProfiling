@@ -1,14 +1,8 @@
-
-import { useEffect, useState } from "react";
 import { educationLevels, employmentStatuses } from "../PageHelper/RegisterAsResidentData";
 import { formatToCurrency } from "../PageHelper/InformationFormatter";
 
-export function EducationAndEmploymentInformation({ setData }) {
-    const [educationStatus, setEducationStatus] = useState("");
-    const [educationalAttainment, setEducationalAttainment] = useState("");
-    const [Occupation, setOccupation] = useState("");
-    const [statusOfEmployment, setStatusOfEmployment] = useState("");
-    const [income, setIncome] = useState("₱0.00");
+export function EducationAndEmploymentInformation({ data, setData }) {
+
 
     return (
         <>
@@ -16,8 +10,8 @@ export function EducationAndEmploymentInformation({ setData }) {
             <label className="block mb-2">Education Status</label>
             <select
                 name="Education Status"
-                value={educationStatus} 
-                onChange={(e) => {setData('educationStatus', e.target.value), setEducationStatus(e.target.value)}} 
+                value={data.educationStatus} 
+                onChange={(e) => {setData('educationStatus', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >
@@ -32,8 +26,8 @@ export function EducationAndEmploymentInformation({ setData }) {
             <label className="block mb-2">Educational Attainment</label>
             <select
                 name="Educational Attainment"
-                value={educationalAttainment} 
-                onChange={(e) => {setData('educationalAttainment', e.target.value), setEducationalAttainment(e.target.value)}} 
+                value={data.educationalAttainment} 
+                onChange={(e) => {setData('educationalAttainment', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >
@@ -48,8 +42,8 @@ export function EducationAndEmploymentInformation({ setData }) {
             <input
                 type="text"
                 name="Occupation"
-                value={Occupation} 
-                onChange={(e) => {setData('occupation', e.target.value), setOccupation(e.target.value)}} 
+                value={data.occupation} 
+                onChange={(e) => {setData('occupation', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -57,8 +51,8 @@ export function EducationAndEmploymentInformation({ setData }) {
             <label className="block mb-2">Status of Employment</label>
             <select
                 name="Status of Employment"
-                value={statusOfEmployment} 
-                onChange={(e) => {setData('statusOfEmployment', e.target.value), setStatusOfEmployment(e.target.value)}} 
+                value={data.statusOfEmployment} 
+                onChange={(e) => {setData('statusOfEmployment', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >
@@ -74,11 +68,10 @@ export function EducationAndEmploymentInformation({ setData }) {
             <input
                 type="text"
                 name="Monthly Gross Income"
-                value={income}
+                value={data.monthlyGrossIncome}
                 onChange={(e) => {
                     const formattedValue = formatToCurrency(e.target.value)
-                    setIncome(formattedValue);
-                    setData("Pension", formattedValue);
+                    setData("monthlyGrossIncome", formattedValue);
                 }}
                 className="w-full p-2 border rounded mb-4"
                 required

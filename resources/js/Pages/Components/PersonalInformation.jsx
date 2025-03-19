@@ -1,11 +1,4 @@
-import { useEffect, useState } from "react";
-
-export function PersonalInformation({ setData }) {
-    const [lastName, setLastName] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [middleName, setMiddleName] = useState("");
-    const [nameExtension, setNameExtension] = useState("");
-    const [gender, setGender] = useState("")
+export function PersonalInformation({data, setData }) {
 
     return (
       <> 
@@ -14,8 +7,8 @@ export function PersonalInformation({ setData }) {
             <input
                 type="text"
                 name="Last Name"
-                value={lastName} 
-                onChange={(e) => {setData('last_name', e.target.value), setLastName(e.target.value)}} 
+                value={data.last_name} 
+                onChange={(e) => {setData('last_name', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -24,8 +17,8 @@ export function PersonalInformation({ setData }) {
             <input
                 type="text"
                 name="First Name"
-                value={firstName} 
-                onChange={(e) => {setData('first_name', e.target.value), setFirstName(e.target.value)}} 
+                value={data.first_name} 
+                onChange={(e) => {setData('first_name', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -34,8 +27,8 @@ export function PersonalInformation({ setData }) {
             <input
                 type="text"
                 name="Middle name"
-                value={middleName} 
-                onChange={(e) => {setData('middle_name', e.target.value), setMiddleName(e.target.value)}} 
+                value={data.middle_name} 
+                onChange={(e) => {setData('middle_name', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             />
@@ -44,16 +37,16 @@ export function PersonalInformation({ setData }) {
             <input
                 type="text"
                 name="Name extension"
-                value={nameExtension} 
-                onChange={(e) => {setData('name_extension', e.target.value), setNameExtension(e.target.value)}}
+                value={data.name_extension} 
+                onChange={(e) => {setData('name_extension', e.target.value)}}
                 className="w-full p-2 border rounded mb-4"
             />
 
             <label className="block mb-2">Gender</label>
             <select
                 name="gender"
-                value={gender} 
-                onChange={(e) => {setData('gender', e.target.value), setGender(e.target.value)}} 
+                value={data.gender} 
+                onChange={(e) => {setData('gender', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >

@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formatToCurrency } from "../PageHelper/InformationFormatter";
 
 
-export function ResidencyAndDurationInformation({ setData }) {
-    const [yearStarted, setYearStarted] = useState('');
-    const [pension, setPension] = useState('₱0.00');
-    const [isPregnant, setIsPregnant] = useState('')
+export function ResidencyAndDurationInformation({ data, setData }) {
+  
+    useEffect(()=> {
+        if (data.gender  !== "Female") {
+            setData("isPregnant", "No")
+            console.log("USER IS NOW MALE!")
+        }
+    }, [data.gender])
 
-    useEffect(() => {
-        console.log(data)
-    })
-    
-   
     return (
         <>
             <h2 className="text-2xl font-bold mb-4 text-center">Residency & Duration</h2>
@@ -19,10 +18,9 @@ export function ResidencyAndDurationInformation({ setData }) {
             <input
                 type="number"
                 name="yearStarted"
-                value={yearStarted} 
+                value={data.yearStartedStaying} 
                 onChange={(e) => {
-                    setData('yearStartedStaying', e.target.value), 
-                    setYearStarted(e.target.value)
+                    setData('yearStartedStaying', e.target.value) 
                 }} 
 
                 onBlur={(e) => {
@@ -30,10 +28,10 @@ export function ResidencyAndDurationInformation({ setData }) {
                     let value = parseInt(e.target.value, 10);
 
                     if (value >= 1900 && value <= currentYear) {
-                        setYearStarted(value);
+                        
                         setData('yearStartedStaying', value);
                     } else {
-                        setYearStarted(currentYear);
+                        setData('yearStartedStaying', currentYear);
                     }
                 }}
                 className="w-full p-2 border rounded mb-4"
@@ -46,11 +44,10 @@ export function ResidencyAndDurationInformation({ setData }) {
             <input
                 type="text"
                 name="Pension"
-                value={pension}
+                value={data.pension}
                 onChange={(e) => {
                     const formattedValue = formatToCurrency(e.target.value)
-                    setPension(formattedValue);
-                    setData("monthlyGrossIncome", formattedValue);
+                    setData("pension", formattedValue);
                 }}
                 className="w-full p-2 border rounded mb-4"
                 required
@@ -62,10 +59,9 @@ export function ResidencyAndDurationInformation({ setData }) {
                     <label className="block mb-2">If Pregnant</label>
                     <select
                         name="Status of Employment"
-                        value={isPregnant}
+                        value={data.isPregnant}
                         onChange={(e) => {
-                            setData("statusOfEmployment", e.target.value);
-                            setIsPregnant(e.target.value);
+                            setData("isPregnant", e.target.value);
                         }}
                         className="w-full p-2 border rounded mb-4"
                     >
@@ -79,10 +75,9 @@ export function ResidencyAndDurationInformation({ setData }) {
                     <label className="block mb-2">If Pregnant</label>
                     <select
                         name="Status of Employment"
-                        value={isPregnant}
+                        value={data.isPregnant}
                         onChange={(e) => {
-                            setData("statusOfEmployment", e.target.value);
-                            setIsPregnant(e.target.value);
+                            setData("isPregnant", e.target.value);
                         }}
                         className="w-full p-2 border rounded mb-4"
                         disabled
@@ -91,11 +86,5 @@ export function ResidencyAndDurationInformation({ setData }) {
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
                     </select>
-                </>
-)}
-            
-           
-            
-        </>
-    )
-}
+                </>)}
+        </>)}

@@ -1,16 +1,10 @@
 import { Religions, Ethnicities, Civil_Status } from "../PageHelper/RegisterAsResidentData";
-import { useEffect, useState } from "react";
 
 
-export function DemographicInformation({ setData }) {
-    const [birthDate, setBirthDate] = useState("");
-    const [age, setAge] = useState(0);
-    const [civilStatus, setCivilStatus] = useState('');
-    const [religion, setReligion] = useState("");
-    const [ethnicity, setEthnicity] = useState("");
+export function DemographicInformation({ data, setData }) {
 
     const calculatedAge = () => {
-        const birth = new Date(birthDate);
+        const birth = new Date(data.birthDate);
         const today = new Date();
         let age = today.getFullYear() - birth.getFullYear();
         if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
@@ -26,12 +20,9 @@ export function DemographicInformation({ setData }) {
         <input
             type="date"
             name="birthDate"
-            value={birthDate}
+            value={data.birthDate}
             onChange={(e) => {
-                setBirthDate(e.target.value);
-                setData("birthDate", e.target.value);
-                setAge(calculatedAge());
-            }}
+              setData("birthDate", e.target.value);}}
             className="w-full p-2 border rounded mb-4"
             required
             max={new Date().toISOString().split('T')[0]}
@@ -41,7 +32,7 @@ export function DemographicInformation({ setData }) {
         <input
             type="number"
             name="age"
-            value={age}
+            value={calculatedAge(data.birthDate)}
             className="w-full p-2 border rounded mb-4 bg-gray-100 cursor-not-allowed"
             min="0"
             readOnly
@@ -50,8 +41,8 @@ export function DemographicInformation({ setData }) {
         <label className="block mb-2">Civil Status</label>
         <select
             name="Civil Status"
-            value={civilStatus} 
-            onChange={(e) => {setData('civilStatus', e.target.value), setCivilStatus(e.target.value)}} 
+            value={data.civilStatus} 
+            onChange={(e) => {setData('civilStatus', e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
         >   
@@ -65,8 +56,8 @@ export function DemographicInformation({ setData }) {
 
         <select
             name="Religion"
-            value={religion} 
-            onChange={(e) => {setData('religion', e.target.value), setReligion(e.target.value)}} 
+            value={data.religion} 
+            onChange={(e) => {setData('religion', e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
         >
@@ -79,8 +70,8 @@ export function DemographicInformation({ setData }) {
         <label className="block mb-2">Ethnicity</label>
         <select
             name="ethnicity"
-            value={ethnicity} 
-            onChange={(e) => {setData('ethnicity', e.target.value), setEthnicity(e.target.value)}} 
+            value={data.ethnicity} 
+            onChange={(e) => {setData('ethnicity', e.target.value)}} 
             className="w-full p-2 border rounded mb-4"
             required
         >   

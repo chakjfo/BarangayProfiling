@@ -1,13 +1,7 @@
-import { useState } from "react";
 import { familyRelationOptions, houseOccupancyTypes, lotOccupancyData } from "../PageHelper/RegisterAsResidentData";
 
 
-export function FamilyDetailsInformation({ setData }) {
-    const [personType, setPersonType] = useState("");
-    const [familyRelations, setFamilyRelations] = useState("");
-    const [bloodType, setBloodType] = useState("");
-    const [houseOccupancy, setHouseOccupancy] = useState("");
-    const [lotOccupancy, setLotOccupancy] = useState("");
+export function FamilyDetailsInformation({ data, setData }) {
 
     return (
         <>
@@ -16,8 +10,8 @@ export function FamilyDetailsInformation({ setData }) {
             <label className="block mb-2">Person Type</label>
             <select
                 name="PersonType"
-                value={personType} 
-                onChange={(e) => {setData('personType', e.target.value), setPersonType(e.target.value)}} 
+                value={data.personType} 
+                onChange={(e) => {setData('personType', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >   
@@ -31,8 +25,8 @@ export function FamilyDetailsInformation({ setData }) {
             <label className="block mb-2">Relation to the Family Head</label>
             <select
                 name="RelationToFamily"
-                value={familyRelations} 
-                onChange={(e) => {setData('familyRelations', e.target.value), setFamilyRelations(e.target.value)}} 
+                value={data.familyRelations} 
+                onChange={(e) => {setData('familyRelations', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >   
@@ -48,8 +42,8 @@ export function FamilyDetailsInformation({ setData }) {
             <label className="block mb-2">Blood Type</label>
             <select
                 name="Civil Status"
-                value={bloodType} 
-                onChange={(e) => {setData('bloodType', e.target.value), setBloodType(e.target.value)}} 
+                value={data.bloodType} 
+                onChange={(e) => {setData('bloodType', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >   
@@ -69,8 +63,8 @@ export function FamilyDetailsInformation({ setData }) {
             <label className="block mb-2">House Occupancy</label>
             <select
                 name="House Occupancy"
-                value={houseOccupancy} 
-                onChange={(e) => {setData('houseOccupancy', e.target.value), setHouseOccupancy(e.target.value)}} 
+                value={data.houseOccupancy} 
+                onChange={(e) => {setData('houseOccupancy', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >   
@@ -85,8 +79,8 @@ export function FamilyDetailsInformation({ setData }) {
             <label className="block mb-2">Lot Occupancy</label>
             <select
                 name="lotOccupancy"
-                value={lotOccupancy} 
-                onChange={(e) => {setData('lotOccupancy', e.target.value); setLotOccupancy(e.target.value)}} 
+                value={data.lotOccupancy} 
+                onChange={(e) => {setData('lotOccupancy', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >   

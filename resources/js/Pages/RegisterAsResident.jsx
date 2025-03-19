@@ -1,11 +1,12 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useForm } from '@inertiajs/react';
 
 import { 
   PersonalInformation, DemographicInformation, FamilyDetailsInformation, 
   EducationAndEmploymentInformation, ResidencyAndDurationInformation 
 } from "./PageHelper/InformationComponentBarrel";
+import { stringify } from "postcss";
 
 export default function RegisterAsResident() {
   const handleSubmit = (e) => {
@@ -36,36 +37,34 @@ export default function RegisterAsResident() {
           educationStatus: '',
           occupation: '',
           statusOfEmployment: '',
-          monthlyGrossIncome: '',
+          monthlyGrossIncome: '₱0.00',
 
           yearStartedStaying: '',
-          Pension: '',
+          pension: '₱0.00',
+          isPregnant: '',
+
     });
 
-    const [formData, setFormData] = useState([
-      <PersonalInformation setData={setData} />,
-      <DemographicInformation setData={setData} />,
-      <FamilyDetailsInformation setData={setData} />,
-      <EducationAndEmploymentInformation setData={setData} />,
-      <ResidencyAndDurationInformation setData={setData} />
-    ]);
-  
+   
+    const formSteps = [
+      PersonalInformation,
+      DemographicInformation,
+      FamilyDetailsInformation,
+      EducationAndEmploymentInformation,
+      ResidencyAndDurationInformation
+    ];
+    
     const [formIndex, setFormIndex] = useState(0);
-
-    const [currentForm, setCurrentForm] = useState(formData[formIndex]);
-
-    useEffect(() => {
-      setCurrentForm(formData[formIndex]);
-    }, [formIndex]);
-
-
+    
+    const currentForm = useMemo(() => {
+      const FormComponent = formSteps[formIndex];
+      return <FormComponent setData={setData} data={data} />;
+    }, [formIndex, setData, data]);
+    
     const changeFormIndex = (number) => {
-      if (number >= formData.length|| number < 0) {
-        return;
-      }
+      if (number >= formSteps.length || number < 0) return;
       setFormIndex(number);
-    }
-
+    };
 
   return (
     <div className="flex justify-center items-center min-h-screen flex-col bg-gray-100">

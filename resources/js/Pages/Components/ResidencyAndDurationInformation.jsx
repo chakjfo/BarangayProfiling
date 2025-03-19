@@ -12,10 +12,7 @@ export function ResidencyAndDurationInformation({ data, setData }) {
     }, [])
   
     useEffect(()=> {
-        if (data.gender  !== "Female") {
-            setData("isPregnant", "No")
-            console.log("USER IS NOW MALE!")
-        }
+        data.gender !== "Female" ? setData("isPregnant", "No") : ""
     }, [data.gender])
 
     return (

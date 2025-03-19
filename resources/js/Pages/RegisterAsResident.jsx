@@ -42,6 +42,7 @@ export default function RegisterAsResident() {
           yearStartedStaying: '',
           pension: '₱0.00',
           isPregnant: '',
+          personsWithDisability: '',
 
     });
 

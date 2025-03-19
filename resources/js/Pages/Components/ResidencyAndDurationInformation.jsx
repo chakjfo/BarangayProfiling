@@ -1,8 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { formatToCurrency } from "../PageHelper/InformationFormatter";
+import { calculatedAge } from "../PageHelper/InformationFormatter";
 
 
 export function ResidencyAndDurationInformation({ data, setData }) {
+    const [isSenior, setIsSenior] = useState()
+
+    useEffect(() => {
+        const age = calculatedAge(data.birthDate)
+        age >= 60 ? setIsSenior("Yes") : setIsSenior("No");
+    }, [])
   
     useEffect(()=> {
         if (data.gender  !== "Female") {
@@ -72,9 +79,9 @@ export function ResidencyAndDurationInformation({ data, setData }) {
                 </>
             ) : (
                 <>
-                    <label className="block mb-2">If Pregnant</label>
+                    <label className="block mb-2">Is Pregnant</label>
                     <select
-                        name="Status of Employment"
+                        name="Is Pregnant"
                         value={data.isPregnant}
                         onChange={(e) => {
                             setData("isPregnant", e.target.value);
@@ -87,4 +94,13 @@ export function ResidencyAndDurationInformation({ data, setData }) {
                         <option value="No">No</option>
                     </select>
                 </>)}
+
+            <label className="block mb-2">Senior Citizen</label>
+                <input
+                    type="Text"
+                    name="Senior Citizen"
+                    value={isSenior}
+                    disabled
+                    className="w-full p-2 border rounded mb-4">
+                </input>
         </>)}

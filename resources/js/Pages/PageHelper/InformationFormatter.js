@@ -10,4 +10,12 @@ function formatToCurrency(valueArgs) {
     return formattedValue
 }
 
-export { formatToCurrency }
+const calculatedAge = (date) => {
+    const birth = new Date(date);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
+    return age;
+}
+
+export { formatToCurrency, calculatedAge }

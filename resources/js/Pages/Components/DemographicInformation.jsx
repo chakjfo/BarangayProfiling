@@ -1,16 +1,9 @@
 import { Religions, Ethnicities, Civil_Status } from "../PageHelper/RegisterAsResidentData";
+import { calculatedAge } from "../PageHelper/InformationFormatter";
 
 
 export function DemographicInformation({ data, setData }) {
 
-    const calculatedAge = () => {
-        const birth = new Date(data.birthDate);
-        const today = new Date();
-        let age = today.getFullYear() - birth.getFullYear();
-        if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
-        return age;
-    }
-    
 
     return (
         <> 

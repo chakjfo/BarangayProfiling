@@ -1,12 +1,12 @@
 
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useForm } from '@inertiajs/react';
 
 import { 
   PersonalInformation, DemographicInformation, FamilyDetailsInformation, 
   EducationAndEmploymentInformation, ResidencyAndDurationInformation 
 } from "./PageHelper/InformationComponentBarrel";
-import { stringify } from "postcss";
+
 
 export default function RegisterAsResident() {
   const handleSubmit = (e) => {

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string("ethnicity");
             $table->string("blood_type");
             $table->string("civil_status");
+            $table->string("year_started_staying");
+            $table->string("status_of_employment");
+            $table->double("pension");
             $table->timestamps();
         });
     }

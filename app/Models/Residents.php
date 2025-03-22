@@ -7,19 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Residents extends Model
 {
-    protected $fillable = [
-        "first_name",
-        "middle_name",
-        "last_name",
-        "name_extension",
-        "gender",
-        "birth_date",
-        "civil_status",
-        "religion",
-        "ethnicity",
-        "blood_type",
-        "civil_status",
-    ];
-    /** @use HasFactory<\Database\Factories\ResidentsFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'last_name',
+        'first_name',
+        'middle_name',
+        'name_extension',
+        'gender',
+        'birth_date',
+        'civil_status',
+        'religion',
+        'ethnicity',
+        'blood_type',
+        'year_started_staying',
+        'status_of_employment',
+        'pension'
+    ];
+
+    public function families()
+    {
+        return $this->hasMany(Families::class, 'resident_id');
+    }
 }

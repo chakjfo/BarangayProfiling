@@ -3,12 +3,13 @@ import { useState, useMemo } from "react";
 import { useForm } from '@inertiajs/react';
 
 import { 
-  PersonalInformation, DemographicInformation, FamilyDetailsInformation, 
-  EducationAndEmploymentInformation, ResidencyAndDurationInformation 
+  PersonalInformation, PersonalInformationTwo, DemographicInformation
 } from "./PageHelper/InformationComponentBarrel";
 
 
 export default function RegisterAsResident() {
+  const [buttonText, setButtonText] = useState("Next");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form submitted", formData);
@@ -21,41 +22,30 @@ export default function RegisterAsResident() {
           name_extension: '',
           gender: '',
 
-          birthDate: '',
+          birthdate: '',
           religion: '',
           ethnicity: '',
-          civilStatus: '',
-
-          personType: '',
-          familyRelations: '',
           bloodType: '',
-          houseOccupancy: '',
-          lotOccupancy: '',
 
-
-          educationalAttainment: '',
-          educationStatus: '',
-          occupation: '',
-          statusOfEmployment: '',
-          monthlyGrossIncome: '₱0.00',
-
+          civil_status: '',
           yearStartedStaying: '',
-          pension: '₱0.00',
-          isPregnant: '',
-          personsWithDisability: '',
+          status_of_employment: '',
+          pension: '',
 
     });
 
    
     const formSteps = [
       PersonalInformation,
-      DemographicInformation,
-      FamilyDetailsInformation,
-      EducationAndEmploymentInformation,
-      ResidencyAndDurationInformation
+      PersonalInformationTwo,
+      DemographicInformation
     ];
     
     const [formIndex, setFormIndex] = useState(0);
+
+    const PostData = () => {
+      console.log("POST POST POST")
+    }
     
     const currentForm = useMemo(() => {
       const FormComponent = formSteps[formIndex];
@@ -63,7 +53,9 @@ export default function RegisterAsResident() {
     }, [formIndex, setData, data]);
     
     const changeFormIndex = (number) => {
+      number === formSteps.length ? PostData() : null;
       if (number >= formSteps.length || number < 0) return;
+      number === formSteps.length - 1 ? setButtonText("Submit") : setButtonText("Next");
       setFormIndex(number);
     };
 
@@ -81,7 +73,7 @@ export default function RegisterAsResident() {
 
         <button className="flex w-40 items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
           onClick={() => {changeFormIndex(formIndex + 1)}}>
-          Next
+          {buttonText}
         </button>
 
       </div>

@@ -1,79 +1,93 @@
-import { Religions, Ethnicities, Civil_Status } from "../PageHelper/RegisterAsResidentData";
-import { calculatedAge } from "../PageHelper/InformationFormatter";
 
+import { Civil_Status, Status_Of_Employment } from  '../PageHelper/RegisterAsResidentData';
+import { formatToCurrency } from '../PageHelper/InformationFormatter';
 
-export function DemographicInformation({ data, setData }) {
-
+export function DemographicInformation({data, setData }) {
 
     return (
         <> 
-        <h2 className="text-2xl font-bold mb-4 text-center">Demographics Information</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center">Demographic Information</h2>
+            <label className="block mb-2">Civil Status</label>
+            <select
+                name="Civil status"
+                value={data.civil_status} 
+                onChange={(e) => {setData('civil_status', e.target.value)}} 
+                className="w-full p-2 border rounded mb-4"
+                required
+            >
 
-        <label className="block mb-2">Birth Date</label>
-        <input
-            type="date"
-            name="birthDate"
-            value={data.birthDate}
-            onChange={(e) => {
-              setData("birthDate", e.target.value);}}
-            className="w-full p-2 border rounded mb-4"
-            required
-            max={new Date().toISOString().split('T')[0]}
-        />
+                <option value="" disabled>-- Please Select --</option>
+                {Civil_Status.map((value, index) => (
+                    <option key={index} value={value}>
+                        {value}
+                    </option>
+                ))}
+            </select>
+
+            <label className="block mb-2">Year Started Staying in the Barangay</label>
+            <input
+                type="number"
+                name="yearStarted"
+                value={data.yearStartedStaying} 
+                onChange={(e) => {
+                    setData('yearStartedStaying', e.target.value) 
+                }} 
+
+                onBlur={(e) => {
+                    const currentYear = new Date().getFullYear();
+                    let value = parseInt(e.target.value, 10);
+
+                    if (value >= 1900 && value <= currentYear) {
+                        
+                        setData('yearStartedStaying', value);
+                    } else {
+                        setData('yearStartedStaying', currentYear);
+                    }
+                }}
+                className="w-full p-2 border rounded mb-4"
+                min={1900}
+                max={new Date().getFullYear()} 
+                required
+            />
+
+
+            <label className="block mb-2">Status of Employment</label>
+            <select
+                name="Status of Employment"
+                value={data.status_of_employment} 
+                onChange={(e) => {setData('status_of_employment', e.target.value)}} 
+                className="w-full p-2 border rounded mb-4"
+                required
+            >
+
+                <option value="" disabled>-- Please Select --</option>
+                {Status_Of_Employment.map((value, index) => (
+                    <option key={index} value={value}>
+                        {value}
+                    </option>
+                ))}
+            </select>
+
+            <label className="block mb-2">Pension</label>
+            <input
+                type="text"
+                name="Pension"
+                value={data.pension}
+                onChange={(e) => {
+                    const formattedValue = formatToCurrency(e.target.value)
+                    setData("pension", formattedValue);
+                }}
+                className="w-full p-2 border rounded mb-4"
+                required
+            />
+
+
+
             
-        <label className="block mb-2">Age</label>
-        <input
-            type="number"
-            name="age"
-            value={calculatedAge(data.birthDate)}
-            className="w-full p-2 border rounded mb-4 bg-gray-100 cursor-not-allowed"
-            min="0"
-            readOnly
-        />
+            
+        </>
+    );
+  }
 
-        <label className="block mb-2">Civil Status</label>
-        <select
-            name="Civil Status"
-            value={data.civilStatus} 
-            onChange={(e) => {setData('civilStatus', e.target.value)}} 
-            className="w-full p-2 border rounded mb-4"
-            required
-        >   
-            <option value="" disabled>-- Please Select --</option>
-            {Civil_Status.map((status, index) => (
-                <option key={index} value={status}>{status}</option>
-            ))}
-        </select>
 
-        <label className="block mb-2">Religion</label>
-
-        <select
-            name="Religion"
-            value={data.religion} 
-            onChange={(e) => {setData('religion', e.target.value)}} 
-            className="w-full p-2 border rounded mb-4"
-            required
-        >
-            <option value="" disabled>-- Please Select --</option>
-            {Religions.map((religion, index) => (
-                    <option key={index} value={religion}>{religion}</option>
-            ))}
-        </select>
-
-        <label className="block mb-2">Ethnicity</label>
-        <select
-            name="ethnicity"
-            value={data.ethnicity} 
-            onChange={(e) => {setData('ethnicity', e.target.value)}} 
-            className="w-full p-2 border rounded mb-4"
-            required
-        >   
-            <option value="" disabled>-- Please Select --</option>
-            {Ethnicities.map((ethnicity, index) => (
-                <option key={index} value={ethnicity}>{ethnicity}</option>
-            ))}
-        </select>
-
-      </>
-    )
-}
+   

@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Controllers\RegisterResidentController;
 use Inertia\Inertia;
 
 
@@ -35,6 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/registerAsResident', function () {
         return Inertia::render('RegisterAsResident');
     })->name('registerAsResident');
+
+    Route::post('/registerAsResident', [RegisterResidentController::class, 'RegisterResident']
+    )->name('registerAsResident');
 
     Route::get('/logout', function () {
         Auth::logout();

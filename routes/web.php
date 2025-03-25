@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\HandleInertiaRequests;
+use App\Http\Controllers\RegisterResidentController;
 
 use Inertia\Inertia;
 
@@ -43,6 +44,9 @@ Route::get('/dashboard', [DashboardController::class, 'show']
 Route::get('/registerAsResident', function () {
     return Inertia::render('RegisterAsResident');
 })->name('registerAsResident');
+
+Route::post('/registerAsResident', [RegisterResidentController::class, 'RegisterResident']
+)->name('registerAsResident');
 
 Route::get('/logout', function () {
     Auth::logout();

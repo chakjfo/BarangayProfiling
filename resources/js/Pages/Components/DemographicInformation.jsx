@@ -30,7 +30,7 @@ export function DemographicInformation({data, setData }) {
                 name="yearStarted"
                 value={data.yearStartedStaying} 
                 onChange={(e) => {
-                    setData('yearStartedStaying', e.target.value) 
+                    setData('yearStartedStaying', String(e.target.value)) 
                 }} 
 
                 onBlur={(e) => {
@@ -39,9 +39,9 @@ export function DemographicInformation({data, setData }) {
 
                     if (value >= 1900 && value <= currentYear) {
                         
-                        setData('yearStartedStaying', value);
+                        setData('yearStartedStaying', String(value));
                     } else {
-                        setData('yearStartedStaying', currentYear);
+                        setData('yearStartedStaying', String(currentYear));
                     }
                 }}
                 className="w-full p-2 border rounded mb-4"

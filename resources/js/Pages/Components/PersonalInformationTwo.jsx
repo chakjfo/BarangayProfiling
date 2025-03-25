@@ -6,8 +6,8 @@ export function PersonalInformationTwo({data, setData }) {
     const [age, setAge] = useState("");
 
     useEffect(() => {
-        if (data.birthdate !== "") {
-            setAge(calculatedAge(data.birthdate))
+        if (data.birth_date !== "") {
+            setAge(calculatedAge(data.birth_date))
         }
     }, [data]);
 
@@ -20,9 +20,9 @@ export function PersonalInformationTwo({data, setData }) {
             <input
                 type="date"
                 name="birthDate"
-                value={data.birthDate}
+                value={data.birth_date}
                 onChange={(e) => {
-                setData("birthdate", e.target.value);
+                setData("birth_date", e.target.value);
                 setAge(calculatedAge(e.target.value));}}
                 className="w-full p-2 border rounded mb-4"
                 required

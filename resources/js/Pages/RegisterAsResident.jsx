@@ -23,7 +23,7 @@ export default function RegisterAsResident() {
           name_extension: '',
           gender: '',
 
-          birthdate: '',
+          birth_date: '',
           religion: '',
           ethnicity: '',
           bloodType: '',

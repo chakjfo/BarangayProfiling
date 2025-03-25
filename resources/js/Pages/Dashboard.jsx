@@ -5,7 +5,7 @@ import { usePage } from '@inertiajs/react'
 
 
 export default function Dashboard() {
-    const { auth, userCount } = usePage().props;
+    const { auth, userCount, residentsCount } = usePage().props;
 
    
   
@@ -42,7 +42,7 @@ export default function Dashboard() {
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <h4 className="text-xl font-semibold mb-4">Registered Residents</h4>
                     <p className="text-gray-700">Number of registered residents in the barangay.</p>
-                    <div className="mt-4 text-3xl font-bold">None</div>
+                    <div className="mt-4 text-3xl font-bold">{residentsCount}</div>
                 </div>
 
                 {/* Card 3: Active Services */}

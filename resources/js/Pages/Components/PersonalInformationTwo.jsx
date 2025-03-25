@@ -1,9 +1,15 @@
 import { Religions, Ethnicities } from '../PageHelper/RegisterAsResidentData';
 import { calculatedAge } from '../PageHelper/InformationFormatter';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function PersonalInformationTwo({data, setData }) {
     const [age, setAge] = useState("");
+
+    useEffect(() => {
+        if (data.birthdate !== "") {
+            setAge(calculatedAge(data.birthdate))
+        }
+    }, [data]);
 
     return (
       <> 
@@ -16,7 +22,7 @@ export function PersonalInformationTwo({data, setData }) {
                 name="birthDate"
                 value={data.birthDate}
                 onChange={(e) => {
-                setData("birthDate", e.target.value);
+                setData("birthdate", e.target.value);
                 setAge(calculatedAge(e.target.value));}}
                 className="w-full p-2 border rounded mb-4"
                 required

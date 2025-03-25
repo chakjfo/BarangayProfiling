@@ -9,6 +9,7 @@ import {
 
 export default function RegisterAsResident() {
   const [buttonText, setButtonText] = useState("Next");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,7 +45,16 @@ export default function RegisterAsResident() {
     const [formIndex, setFormIndex] = useState(0);
 
     const PostData = () => {
-      console.log("POST POST POST")
+      const isAnyFieldEmpty = Object.values(data).some(value => !value);
+
+      if (isAnyFieldEmpty) {
+          console.log(data)
+          setErrorMessage("Please fill out all fields before submitting!");
+          return;
+      }
+
+      setErrorMessage("");
+      post("/registerAsResident");
     }
     
     const currentForm = useMemo(() => {
@@ -63,8 +73,13 @@ export default function RegisterAsResident() {
     <div className="flex justify-center items-center min-h-screen flex-col bg-gray-100">
       <form className="bg-white p-6 rounded-lg shadow-md w-96" onSubmit={handleSubmit}>
         {currentForm}
+
+        {errorMessage && (
+          <h1 className="text-red-500 font-bold text-center mt-4">{errorMessage}</h1>
+        )}
       </form>
       
+    
       <div className="grid grid-cols-2 rid-row-1 justify-items-center gap-5 mt-4">
         <button className="flex w-40 items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
           onClick={() => changeFormIndex(formIndex - 1)}>

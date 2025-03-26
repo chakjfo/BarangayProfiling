@@ -12,12 +12,17 @@ class DashboardController extends Controller
     //
     public function show()
     {
-        //TODO: FIND IF USER ID ON RESIDENT THEN CHANGE THE REGISTER TO EDIT
+      
+        
+        $alreadyRegistered = Residents::where('id', auth()->user()->id)->exists();
         $usersCount = User::count();
         $residentsCount = Residents::count();
         return Inertia::render('Dashboard', [
             'userCount' => $usersCount,
             'residentsCount' => $residentsCount,
+            'alreadyRegistered' => $alreadyRegistered
+            
+            
         ]);
     }
 }

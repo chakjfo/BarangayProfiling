@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterResidentRequest;
-use Illuminate\Http\Request;
+use Inertia\Inertia;
 use App\Models\Residents;
 
 class RegisterResidentController extends Controller
@@ -15,5 +15,15 @@ class RegisterResidentController extends Controller
         Residents::create($convertedData);
 
         return redirect('/');
+    }
+
+    public function Show() {
+        $alreadyRegistered = Residents::where('id', auth()->user()->id)->exists();
+
+        if($alreadyRegistered) {
+            return redirect('/dashboard');
+        }
+
+        return Inertia::render('RegisterAsResident');
     }
 }

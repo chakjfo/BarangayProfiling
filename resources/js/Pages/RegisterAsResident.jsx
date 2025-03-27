@@ -26,10 +26,10 @@ export default function RegisterAsResident() {
           birth_date: '',
           religion: '',
           ethnicity: '',
-          bloodType: '',
+          blood_type: '',
 
           civil_status: '',
-          yearStartedStaying: '',
+          year_started_staying: '',
           status_of_employment: '',
           pension: '',
 

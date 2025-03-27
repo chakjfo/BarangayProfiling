@@ -76,8 +76,8 @@ export function PersonalInformationTwo({data, setData }) {
             <label className="block mb-2">BloodType</label>
             <select
                 name="BloodType"
-                value={data.bloodType} 
-                onChange={(e) => {setData('bloodType', e.target.value)}} 
+                value={data.blood_type} 
+                onChange={(e) => {setData('blood_type', e.target.value)}} 
                 className="w-full p-2 border rounded mb-4"
                 required
             >

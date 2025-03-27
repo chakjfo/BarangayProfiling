@@ -7,7 +7,7 @@ function formatToCurrency(valueArgs) {
         currency: "PHP",
     }).format(value / 100);
 
-    return formattedValue
+    return formattedValue.replace(/\₱|\$/g, "").trim();
 }
 
 const calculatedAge = (date) => {

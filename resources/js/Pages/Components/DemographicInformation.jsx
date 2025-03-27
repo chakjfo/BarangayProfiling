@@ -28,9 +28,9 @@ export function DemographicInformation({data, setData }) {
             <input
                 type="number"
                 name="yearStarted"
-                value={data.yearStartedStaying} 
+                value={data.year_started_staying} 
                 onChange={(e) => {
-                    setData('yearStartedStaying', String(e.target.value)) 
+                    setData('year_started_staying', String(e.target.value)) 
                 }} 
 
                 onBlur={(e) => {
@@ -72,7 +72,7 @@ export function DemographicInformation({data, setData }) {
             <input
                 type="text"
                 name="Pension"
-                value={data.pension}
+                value={`₱${data.pension}`}
                 onChange={(e) => {
                     const formattedValue = formatToCurrency(e.target.value)
                     setData("pension", formattedValue);

@@ -31,10 +31,10 @@ class RegisterResidentRequest extends FormRequest
             'birth_date' => 'required|string',
             'religion' => 'required|string',
             'ethnicity' => 'required|string',
-            'bloodType' => 'required|string',
+            'blood_type' => 'required|string',
             
             'civil_status' => 'required|string',
-            'yearStartedStaying' => 'required|string',
+            'year_started_staying' => 'required|string',
             'status_of_employment' => 'required|string',
             'pension' => 'required|string',
         ];
@@ -54,12 +54,13 @@ class RegisterResidentRequest extends FormRequest
             'birth_date' => date('Y-m-d', strtotime($validated['birth_date'])), // Convert to Date (YYYY-MM-DD)
             'religion' => $validated['religion'],
             'ethnicity' => $validated['ethnicity'],
-            'blood_type' => $validated['bloodType'], // Change key to match DB
+            'blood_type' => $validated['blood_type'],
 
             'civil_status' => $validated['civil_status'],
-            'year_started_staying' => (int) $validated['yearStartedStaying'], // Convert to Integer
+            'year_started_staying' => (int) $validated['year_started_staying'],
             'status_of_employment' => $validated['status_of_employment'],
-            'pension' => number_format((float) $validated['pension'], 2, '.', ''), // Convert to Decimal (10,2)
-        ];
+            'pension' => number_format((float) preg_replace('/[^0-9.]/', '', $validated['pension']), 2, '.', ''),
+
+        ];  
     }
 }

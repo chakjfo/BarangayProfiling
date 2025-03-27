@@ -19,7 +19,7 @@ export default function Dashboard() {
                 <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">Show Residents</li>
 
                 {alreadyRegistered ? (
-                    <a href="/EditProfile">
+                    <a href="/editProfile">
                         <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">
                         Edit Profile
                         </li>

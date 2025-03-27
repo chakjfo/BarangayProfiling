@@ -14,6 +14,7 @@ class ResidentsFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => \App\Models\User::inRandomOrder()->first()?->id ?? \App\Models\User::factory()->create()->id, 
            'last_name' => $this->faker->lastName(),
             'first_name' => $this->faker->firstName(),
             'middle_name' => $this->faker->optional()->lastName(),

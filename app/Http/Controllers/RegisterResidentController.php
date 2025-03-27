@@ -9,16 +9,16 @@ use App\Models\Residents;
 class RegisterResidentController extends Controller
 {
     public function RegisterResident(RegisterResidentRequest $request) {
-       
         $convertedData = $request->validatedData();
-
+        $convertedData['user_id'] = auth()->id();
+        
         Residents::create($convertedData);
 
         return redirect('/');
     }
 
     public function Show() {
-        $alreadyRegistered = Residents::where('id', auth()->user()->id)->exists();
+        $alreadyRegistered = Residents::where('user_id', auth()->user()->id)->exists();
 
         if($alreadyRegistered) {
             return redirect('/dashboard');

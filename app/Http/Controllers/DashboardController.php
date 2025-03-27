@@ -14,7 +14,8 @@ class DashboardController extends Controller
     {
       
         
-        $alreadyRegistered = Residents::where('id', auth()->user()->id)->exists();
+        $alreadyRegistered = Residents::where('user_id', auth()->user()->id)->exists();
+      
         $usersCount = User::count();
         $residentsCount = Residents::count();
         return Inertia::render('Dashboard', [

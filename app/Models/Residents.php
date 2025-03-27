@@ -10,6 +10,7 @@ class Residents extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'last_name',
         'first_name',
         'middle_name',

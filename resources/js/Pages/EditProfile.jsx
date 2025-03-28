@@ -59,7 +59,7 @@ export default function EditProfile() {
 
         
       
-        //post("/registerAsResident");
+        post("/editProfile");
     }
     
     const currentForm = useMemo(() => {

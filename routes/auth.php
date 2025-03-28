@@ -42,6 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/editProfile', [EditProfileController::class, 'Show']
     )->name('editProfile');
 
+    Route::post('/editProfile', [EditProfileController::class, 'Edit']
+    )->name('editProfile');
+
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('/');

@@ -11,8 +11,10 @@ class EditProfileController extends Controller
     //
     public function Show(){
         $UserData = Residents::where('user_id', auth()->id())->get()->toArray();
-        dd($UserData);
         
-        return Inertia::render('EditProfile');
+        
+        return Inertia::render('EditProfile', [
+            'UserData' => $UserData
+        ]);
     }
 }

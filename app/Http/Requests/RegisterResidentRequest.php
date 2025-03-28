@@ -57,7 +57,7 @@ class RegisterResidentRequest extends FormRequest
             'blood_type' => $validated['blood_type'],
 
             'civil_status' => $validated['civil_status'],
-            'year_started_staying' => (int) $validated['year_started_staying'],
+            'year_started_staying' => (int) $validated['year_started_staying'], 
             'status_of_employment' => $validated['status_of_employment'],
             'pension' => number_format((float) preg_replace('/[^0-9.]/', '', $validated['pension']), 2, '.', ''),
 

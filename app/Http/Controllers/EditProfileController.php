@@ -26,7 +26,7 @@ class EditProfileController extends Controller
     
         if ($UserRow) {
             $convertedData = $request->validated();
-    
+            // Just to be sure that the user_id is not changed
             $convertedData['user_id'] = $UserId;
     
             $UserRow->update($convertedData);

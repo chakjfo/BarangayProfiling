@@ -57,7 +57,7 @@ export default function EditProfile() {
             setData(key, UserData[0][key]);
         }
 
-        console.log(data)
+        
       
         //post("/registerAsResident");
     }

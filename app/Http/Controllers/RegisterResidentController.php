@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegisterResidentRequest;
+use App\Http\Requests\ResidentDataRequest;
 use Inertia\Inertia;
 use App\Models\Residents;
 
 class RegisterResidentController extends Controller
 {
-    public function RegisterResident(RegisterResidentRequest $request) {
+    public function RegisterResident(ResidentDataRequest $request) {
         $convertedData = $request->validatedData();
         $convertedData['user_id'] = auth()->id();
         

@@ -47,17 +47,19 @@ export default function EditProfile() {
     const [formIndex, setFormIndex] = useState(0);
 
     const PostData = () => {
-    const emptyFields = new Set(
-        Object.entries(data)
-            .filter(([key, value]) => !value)
-            .map(([key]) => key)
-        );
+        const emptyFields = new Set(
+            Object.entries(data)
+                .filter(([key, value]) => !value)
+                .map(([key]) => key)
+            );
         
         for (const key of emptyFields) {
             setData(key, UserData[0][key]);
         }
 
+       
         
+       
       
         post("/editProfile");
     }
@@ -78,8 +80,10 @@ export default function EditProfile() {
         const data = UserData[0]
         delete data.id;
         delete data.user_id;
+        delete data.created_at;
+        delete data.updated_at;
         for (const key in data) {
-            setData(key, data[key]);
+            setData(key, String(data[key]));
         }
         console.log(data)
     }, [])

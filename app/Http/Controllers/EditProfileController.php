@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Residents;
 use Inertia\Inertia;
+use App\Http\Requests\ResidentDataRequest;
 
 
 class EditProfileController extends Controller
@@ -18,8 +19,21 @@ class EditProfileController extends Controller
             'UserData' => $UserData
         ]);
     }
-    public function Edit(Request $request){
-        dd("Worked");
+    public function Edit(ResidentDataRequest $request){
+        
+        $UserId = auth()->id();
+        $UserRow = Residents::where('user_id', 3)->first();
+    
+        if ($UserRow) {
+            $convertedData = $request->validated();
+    
+            $convertedData['user_id'] = $UserId;
+    
+            $UserRow->update($convertedData);
+
+        }
+        
+        return redirect('/');
 
     }
 }

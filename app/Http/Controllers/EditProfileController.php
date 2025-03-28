@@ -14,6 +14,9 @@ class EditProfileController extends Controller
     public function Show(){
         $UserData = Residents::where('user_id', auth()->id())->get()->toArray();
         
+        if (count($UserData) == 0){
+            return redirect('/registerAsResident');
+        }
         
         return Inertia::render('EditProfile', [
             'UserData' => $UserData

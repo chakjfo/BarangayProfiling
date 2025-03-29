@@ -23,7 +23,9 @@ class Residents extends Model
         'blood_type',
         'year_started_staying',
         'status_of_employment',
-        'pension'
+        'monthly_gross_income',
+        'pension',
+        
     ];
 
     public function families()

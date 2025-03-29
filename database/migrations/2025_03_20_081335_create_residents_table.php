@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string("blood_type")->nullable();
             $table->integer("year_started_staying")->nullable();
             $table->string("status_of_employment")->nullable();
+            $table->integer("monthly_gross_income")->nullable();
             $table->decimal("pension", 10, 2)->default(0);
             $table->timestamps();
         });

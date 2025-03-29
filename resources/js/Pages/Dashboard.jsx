@@ -5,8 +5,9 @@ import { usePage } from '@inertiajs/react'
 
 
 export default function Dashboard() {
-    const { auth, userCount, residentsCount, alreadyRegistered } = usePage().props;
-   
+    const { auth, userCount, residentsCount, alreadyRegistered, isAdmin } = usePage().props;
+    
+    console.log("Admin: ", isAdmin);
    
   
     return (
@@ -28,6 +29,14 @@ export default function Dashboard() {
                     <a href="/registerAsResident">
                         <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">
                         Register As Resident
+                        </li>
+                    </a>
+                )}
+
+                {isAdmin && (
+                    <a href="/approveOrganizationRegistration">
+                        <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">
+                            Approve Organization Registration
                         </li>
                     </a>
                 )}

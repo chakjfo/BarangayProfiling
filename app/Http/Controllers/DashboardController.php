@@ -15,13 +15,20 @@ class DashboardController extends Controller
       
         
         $alreadyRegistered = Residents::where('user_id', auth()->user()->id)->exists();
-      
+        $isAdmin = User::where('id', auth()->user()->id)->value('is_admin');
+        if ($isAdmin == 1){
+            $isAdmin = true;
+        } else {
+            $isAdmin = false;
+        }
+
         $usersCount = User::count();
         $residentsCount = Residents::count();
         return Inertia::render('Dashboard', [
             'userCount' => $usersCount,
             'residentsCount' => $residentsCount,
-            'alreadyRegistered' => $alreadyRegistered
+            'alreadyRegistered' => $alreadyRegistered,
+            'isAdmin' => $isAdmin,
             
             
         ]);

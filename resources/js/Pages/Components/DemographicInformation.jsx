@@ -37,11 +37,10 @@ export function DemographicInformation({data, setData }) {
                     const currentYear = new Date().getFullYear();
                     let value = parseInt(e.target.value, 10);
 
-                    if (value >= 1900 && value <= currentYear) {
-                        setData('year_started_staying', String(value));
-                    } else {
-                        setData('year_started_staying', String(currentYear));
-                    }
+                    value >= 1900 && value <= currentYear
+                        ? setData('year_started_staying', String(value))
+                        : setData('year_started_staying', String(currentYear));
+
                 }}
                 className="w-full p-2 border rounded mb-4"
                 min={1900}

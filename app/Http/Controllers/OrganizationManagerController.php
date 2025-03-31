@@ -10,13 +10,11 @@ class OrganizationManagerController extends Controller
     //
     public function show()
     {
-        $UserId = auth()->id();
- 
-        $UserRow = User::where('id', $UserId)->first()->makeVisible('is_admin')->toArray();
+        $UserRow = User::where('id', auth()->id())->first()->makeVisible('is_admin')->toArray();
       
-
         return $UserRow['is_admin'] == 0 ? 
             redirect('/dashboard') : 
             Inertia::render('OrganizationManager', []);
     }
 }
+    

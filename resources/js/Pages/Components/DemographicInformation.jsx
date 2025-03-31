@@ -32,16 +32,15 @@ export function DemographicInformation({data, setData }) {
                 onChange={(e) => {
                     setData('year_started_staying', String(e.target.value)) 
                 }} 
-
+               
                 onBlur={(e) => {
                     const currentYear = new Date().getFullYear();
                     let value = parseInt(e.target.value, 10);
 
                     if (value >= 1900 && value <= currentYear) {
-                        
-                        setData('yearStartedStaying', String(value));
+                        setData('year_started_staying', String(value));
                     } else {
-                        setData('yearStartedStaying', String(currentYear));
+                        setData('year_started_staying', String(currentYear));
                     }
                 }}
                 className="w-full p-2 border rounded mb-4"

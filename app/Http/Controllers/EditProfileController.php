@@ -25,10 +25,12 @@ class EditProfileController extends Controller
     public function Edit(ResidentDataRequest $request){
         
         $UserId = auth()->id();
-        $UserRow = Residents::where('user_id', 3)->first();
+ 
+        $UserRow = Residents::where('user_id', $UserId)->first();
     
         if ($UserRow) {
             $convertedData = $request->validated();
+           
             // Just to be sure that the user_id is not changed
             $convertedData['user_id'] = $UserId;
     

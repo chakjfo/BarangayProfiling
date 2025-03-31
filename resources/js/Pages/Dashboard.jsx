@@ -34,9 +34,9 @@ export default function Dashboard() {
                 )}
 
                 {isAdmin && (
-                    <a href="/approveOrganizationRegistration">
+                    <a href="/organizationManager">
                         <li className="py-2 hover:bg-blue-800 rounded cursor-pointer">
-                            Approve Organization Registration
+                            Organization Manager
                         </li>
                     </a>
                 )}

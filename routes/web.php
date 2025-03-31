@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\RegisterResidentController;
 use App\Http\Controllers\EditProfileController;
+use App\Http\Controllers\OrganizationManagerController;
 
 use Inertia\Inertia;
 
@@ -52,6 +53,10 @@ Route::get('/editProfile', [EditProfileController::class, 'Show']
 
 Route::post('/editProfile', [EditProfileController::class, 'Edit']
     )->name('editProfile');
+
+Route::get('/organizationManager', [OrganizationManagerController::class, 'Show']
+)->name('organizationManager');
+
 
 Route::get('/logout', function () {
     Auth::logout();

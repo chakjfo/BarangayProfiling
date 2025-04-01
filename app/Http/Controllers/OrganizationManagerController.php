@@ -7,7 +7,7 @@ use App\Models\User;
 
 class OrganizationManagerController extends Controller
 {
-    //
+    //TODO: GET ALL DATA
     public function show()
     {
         $UserRow = User::where('id', auth()->id())->first()->makeVisible('is_admin')->toArray();

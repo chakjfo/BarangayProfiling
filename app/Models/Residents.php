@@ -28,8 +28,5 @@ class Residents extends Model
         
     ];
 
-    public function families()
-    {
-        return $this->hasMany(Families::class, 'resident_id');
-    }
+    
 }

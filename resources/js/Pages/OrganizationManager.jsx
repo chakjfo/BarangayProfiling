@@ -1,12 +1,28 @@
 import { useState } from "react";
+import { usePage } from '@inertiajs/react';
 
 export default function OrganizationManager() {
     const [filter, setFilter] = useState("view all organization");
-    const [data, setData] = useState([
-        { id: 1, name: "John Doe", organization: "Tech Corp", request: true },
-        { id: 2, name: "Jane Smith", organization: "Health Inc", request: false },
-        { id: 3, name: "Alice Johnson", organization: "Edu World", request: true }
-    ]);
+
+    // TODO: GET ALL ORGANIZATION DATA FROM BACKEND
+    const { testOrgs } = usePage().props;
+
+    const [selectedItems, setSelectedItems] = useState(new Set());
+
+
+    const handleCheckboxChange = (id) => {
+        const updatedSelectedItems = new Set(selectedItems);
+
+        if (updatedSelectedItems.has(id)) {
+            updatedSelectedItems.delete(id);
+        } else {
+            updatedSelectedItems.add(id);
+        }
+
+        setSelectedItems(updatedSelectedItems);
+    };
+
+    
 
     const handleFilterChange = (event) => {
         setFilter(event.target.value);
@@ -15,13 +31,7 @@ export default function OrganizationManager() {
     const applyFilter = () => {
         if (filter === "request only") {
             setData(prevData => prevData.filter(item => item.request));
-        } else {
-            setData([
-                { id: 1, name: "John Doe", organization: "Tech Corp", request: true },
-                { id: 2, name: "Jane Smith", organization: "Health Inc", request: false },
-                { id: 3, name: "Alice Johnson", organization: "Edu World", request: true }
-            ]);
-        }
+        } 
     };
 
     return (
@@ -39,19 +49,22 @@ export default function OrganizationManager() {
                         <th className="p-2 border-r">ID</th>
                         <th className="p-2 border-r">Name</th>
                         <th className="p-2 border-r">Organization</th>
-                        <th className="p-2">Member</th>
+                        <th className="p-2 border-r">Status</th>
+                        <th className="p-2">Select</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item) => (
+                    {testOrgs.map((item) => (
                         <tr key={item.id} className="border-b">
                             <td className="p-2 border-r text-center">{item.id}</td>
                             <td className="p-2 border-r">{item.name}</td>
-                            <td className="p-2">{item.organization}</td>
+                            <td className="p-2">HELLO</td>
+                            <td className="p-2">{item.status}</td>
+                            
                             <td className="p-2 text-center">
                                 <input 
                                     type="checkbox" 
-                                    checked={item.member} 
+                                    checked={item.Select} 
                                     onChange={() => handleCheckboxChange(item.id)}
                                 />
                             </td>

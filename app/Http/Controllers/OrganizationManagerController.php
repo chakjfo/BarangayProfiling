@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Women;
+use App\Models\Organizations;
 
 class OrganizationManagerController extends Controller
 {
@@ -12,7 +12,7 @@ class OrganizationManagerController extends Controller
     public function show()
     {
         $UserRow = User::where('id', auth()->id())->first()->makeVisible('is_admin')->toArray();
-        $testOrgs = Women::all()->toArray();
+        $testOrgs = Organizations::all()->toArray();
         return $UserRow['is_admin'] == 0 ? 
             redirect('/dashboard') : 
           

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { usePage } from '@inertiajs/react';
 
 export default function OrganizationManager() {
+    //TODO: Make the status clickable and change the status of the organization
     const [filter, setFilter] = useState("view all organization");
 
     const { organizationData, userData } = usePage().props;

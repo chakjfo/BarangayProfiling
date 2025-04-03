@@ -4,15 +4,12 @@ import { usePage } from '@inertiajs/react';
 export default function OrganizationManager() {
     const [filter, setFilter] = useState("view all organization");
 
-    // TODO: GET ALL ORGANIZATION DATA FROM BACKEND
-    const { testOrgs } = usePage().props;
+    const { organizationData, userData } = usePage().props;
 
     const [selectedItems, setSelectedItems] = useState(new Set());
 
-
     const handleCheckboxChange = (id) => {
         const updatedSelectedItems = new Set(selectedItems);
-
         if (updatedSelectedItems.has(id)) {
             updatedSelectedItems.delete(id);
         } else {
@@ -22,22 +19,20 @@ export default function OrganizationManager() {
         setSelectedItems(updatedSelectedItems);
     };
 
-    
-
-    const handleFilterChange = (event) => {
-        setFilter(event.target.value);
-    };
 
     const applyFilter = () => {
-        if (filter === "request only") {
-            setData(prevData => prevData.filter(item => item.request));
-        } 
+        console.log("TEST FILTER")
+    };
+
+    const getUserNameById = (userId) => {
+        const user = userData.find(user => user.id === userId);
+        return user ? user.name : "Unknown"; 
     };
 
     return (
         <div className="p-4">
             <div className="mb-4">
-                <select value={filter} onChange={handleFilterChange} className="p-2 border rounded w-60">
+                <select value={filter} onChange={(e) => {setFilter(e.target.value)}} className="p-2 border rounded w-60">
                     <option value="view all organization">View All Organizations</option>
                     <option value="request only">Request Only</option>
                 </select>
@@ -54,11 +49,11 @@ export default function OrganizationManager() {
                     </tr>
                 </thead>
                 <tbody>
-                    {testOrgs.map((item) => (
+                    {organizationData.map((item) => (
                         <tr key={item.id} className="border-b">
-                            <td className="p-2 border-r text-center">{item.id}</td>
-                            <td className="p-2 border-r">{item.name}</td>
-                            <td className="p-2">HELLO</td>
+                            <td className="p-2 border-r text-center">{item.user_id}</td>
+                            <td className="p-2 border-r">{getUserNameById(item.user_id)}</td>
+                            <td className="p-2">{item.organization_name}</td>
                             <td className="p-2">{item.status}</td>
                             
                             <td className="p-2 text-center">

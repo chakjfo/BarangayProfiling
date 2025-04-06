@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePage } from '@inertiajs/react';
+import { data } from "autoprefixer";
 
 export default function OrganizationManager() {
     //TODO: Make it so that apply change will grab the organizationDataState and re-apply the data
@@ -9,6 +10,7 @@ export default function OrganizationManager() {
 
     const { organizationData, userData } = usePage().props;
     const [organizationDataState, setOrganizationDataState] = useState();
+    const dataChangesMap = useRef(new Map());
 
     const statusMap = {
         accepted: "rejected",
@@ -48,7 +50,10 @@ export default function OrganizationManager() {
             }
             return item;
         });
+        
+        dataChangesMap.current[rowId] = [userId, organizationName ,newStatus];
         setOrganizationDataState(updatedOrganizationData);
+        console.log(dataChangesMap.current)
     }
 
     

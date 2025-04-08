@@ -49,6 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/organizationManager', [OrganizationManagerController::class, 'Show']
     )->name('organizationManager');
 
+    Route::post('/organizationManager', [OrganizationManagerController::class, 'applyChanges']
+    )->name('organizationManager');
+
     Route::get('/logout', function () {
         Auth::logout();
         return redirect('/');

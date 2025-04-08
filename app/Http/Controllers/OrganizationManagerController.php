@@ -22,5 +22,25 @@ class OrganizationManagerController extends Controller
                 "userData" => $userData,
             ]);
     }
+
+
+    public function applyChanges(Request $request)
+    {
+        foreach ($request->changesMap as $rowId => $change) {
+            [$userId, $organizationName, $newStatus] = $change;
+            
+            $userRow = Organizations::where('user_id', $userId)
+                        ->where('organization_name', $organizationName)
+                        ->first();
+
+            if ($userRow) {
+                $userRow['status'] = $newStatus;
+    
+                $userRow->save();
+            }
+        }
+        return redirect('/organizationManager');
+    }
+        
 }
     

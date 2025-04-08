@@ -1,16 +1,17 @@
 import { useEffect, useState, useRef } from "react";
-import { usePage } from '@inertiajs/react';
-import { data } from "autoprefixer";
+import { usePage, useForm } from '@inertiajs/react';
 
 export default function OrganizationManager() {
     //TODO: Make it so that apply change will grab the organizationDataState and re-apply the data
-    //TODO: Maybe make a set of all data changed on hashmap (userid, organization name, status) and then put update their row in database instead of iterating all data and updating
     //TODO: make filter, maybe every iteration on map check what's the filter condition in ((organizationDataState || []).map) and decide if show or not show the row
     const [filter, setFilter] = useState("view all organization");
 
     const { organizationData, userData } = usePage().props;
     const [organizationDataState, setOrganizationDataState] = useState();
     const dataChangesMap = useRef(new Map());
+    const { changesMap, setChangesMap, post  } = useForm({
+        changesMap: dataChangesMap.current,
+    });
 
     const statusMap = {
         accepted: "rejected",
@@ -24,12 +25,9 @@ export default function OrganizationManager() {
        
     }, [organizationData])
 
-
-
-
-    const applyFilter = () => {
-        console.log("TEST FILTER")
-    };
+    const applyChanges = () => {
+        post('/organizationManager')
+    }
 
     const getUserNameById = (userId) => {
         const user = userData.find(user => user.id === userId);
@@ -65,7 +63,7 @@ export default function OrganizationManager() {
                     <option value="view all organization">View All Organizations</option>
                     <option value="request only">Request Only</option>
                 </select>
-                <button onClick={applyFilter} className="ml-2 p-2 bg-blue-500 text-white rounded">Apply Changes</button>
+                <button onClick={applyChanges} className="ml-2 p-2 bg-blue-500 text-white rounded">Apply Changes</button>
             </div>
             <table className="min-w-full bg-white border border-gray-200">
                 <thead>

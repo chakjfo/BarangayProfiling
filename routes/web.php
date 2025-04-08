@@ -57,6 +57,9 @@ Route::post('/editProfile', [EditProfileController::class, 'Edit']
 Route::get('/organizationManager', [OrganizationManagerController::class, 'Show']
 )->name('organizationManager');
 
+Route::post('/organizationManager', [OrganizationManagerController::class, 'applyChanges']
+)->name('organizationManager');
+
 
 Route::get('/logout', function () {
     Auth::logout();

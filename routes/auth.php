@@ -8,6 +8,7 @@ use App\Http\Middleware\HandleInertiaRequests;
 use App\Http\Controllers\RegisterResidentController;
 use App\Http\Controllers\EditProfileController;
 use App\Http\Controllers\OrganizationManagerController;
+use App\Http\Controllers\JoinOrganizationController;
 use Inertia\Inertia;
 
 
@@ -51,6 +52,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/organizationManager', [OrganizationManagerController::class, 'applyChanges']
     )->name('organizationManager');
+
+    Route::get('/JoinOrganization', [JoinOrganizationController::class, 'show']
+    )->name('JoinOrganization');
+
+    Route::post('/JoinOrganization', [JoinOrganizationController::class, 'join']
+    )->name('JoinOrganization');
 
     Route::get('/logout', function () {
         Auth::logout();

@@ -14,6 +14,8 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sourcecode: ['"Source Code Pro"', 'monospace'],
+                roboto: ['Roboto', 'sans-serif'],
             },
         },
     },

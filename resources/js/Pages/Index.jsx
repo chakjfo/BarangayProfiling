@@ -1,35 +1,52 @@
 import { Link } from "@inertiajs/react";
+import BackgroundImage from "../images/IndexBackground5.jpg";
 
 const Index = () => {
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 h-screen flex items-center justify-center">
-      <div className="w-11/12 max-w-md bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-6">
-        <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            Barangay Profiling System
-          </h1>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
-            Manage and organize records efficiently.
-          </p>
-        </div>
+    <div 
+    className="flex flex-col items-center justify-start h-screen w-screen bg-cover bg-center">
+      <div className="flex flex-row w-screen bg-[#f4f7f8] h-20">
+          <div className="flex flex-col items-end px-8 justify-center w-1/5 border-r-4 border-y-[3px] border-[#3b4d5c]">
+            <h1 className="font-roboto text-2xl font-semibold text-[#1a2e3b] tracking-tight">
+              LOCALPULSE
+            </h1>
+          </div>
 
-        {/* Action Buttons */}
-        <div className="mt-6 flex flex-col items-center space-y-3">
-          <Link
-            href="/login"
-            className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="w-full text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:bg-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
-          >
-            Create Account
-          </Link>
+          <div className="flex flex-col items-center justify-center w-4/5 border-y-[3px] border-[#3b4d5c]"> 
+
+          </div>
+      </div>
+      <div 
+        className="flex flex-col items-center justify-center w-screen h-[80vh] bg-cover bg-[position:center_90%]  bg-neutral-900"
+        style={{ backgroundImage: `url(${BackgroundImage})` }}>
+
+        <div className="flex flex-row items-center justify-center w-full h-full">
+            <div className="flex flex-col justify-center items-center w-[50%] h-full bg-opacity-50">
+              <h1 className="text-6xl font-bold text-white font-roboto drop-shadow-lg text-center pr-40">
+                LocalPulse
+              </h1>
+              <p className="text-sm text-white text-center mt-4">
+                Your trusted platform for comprehensive barangay profiling.
+              </p>
+              
+
+
+            </div>
+
+
+
+
+            <div className="flex flex-col items-center w-[50%] h-full">
+
+            </div>
+
         </div>
       </div>
-    </section>
+
+      
+
+
+    </div>
   );
 };
 

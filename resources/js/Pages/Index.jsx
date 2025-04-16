@@ -21,13 +21,18 @@ const Index = () => {
         style={{ backgroundImage: `url(${BackgroundImage})` }}>
 
         <div className="flex flex-row items-center justify-center w-full h-full">
-            <div className="flex flex-col justify-center items-center w-[50%] h-full bg-opacity-50">
-              <h1 className="text-6xl font-bold text-white font-roboto drop-shadow-lg text-center pr-40">
-                LocalPulse
-              </h1>
-              <p className="text-sm text-white text-center mt-4">
-                Your trusted platform for comprehensive barangay profiling.
-              </p>
+            <div className="flex flex-col justify-center items-center w-[40%] h-full bg-opacity-50">
+              <div className="flex flex-col items-center justify-start w-[90%] h-[90%] border border-red-500">
+                <div className="flex flex-col items-center justify-center w-[80%] h-[30%] mt-20 mr-16 border border-red-500">
+                  <h1 className="text-6xl font-bold text-white font-roboto drop-shadow-lg">
+                    LocalPulse
+                  </h1>
+                  <p className="text-sm text-white mr-4">
+                    Your trusted platform for barangay profiling.
+                  </p>
+                </div>
+
+              </div>
               
 
 
@@ -36,7 +41,7 @@ const Index = () => {
 
 
 
-            <div className="flex flex-col items-center w-[50%] h-full">
+            <div className="flex flex-col items-center w-[60%] h-full">
 
             </div>
 

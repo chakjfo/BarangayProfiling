@@ -46,9 +46,10 @@ const Index = () => {
         <div className="flex flex-row items-center justify-center w-full h-full">
             <div className="flex flex-col justify-center items-center w-[40%] h-full bg-opacity-50 ">
 
-              {/* Welcome Text */}
-              <div className="flex flex-col items-center justify-start w-[90%] h-[90%] border border-red-500">
-                <div className="flex flex-col items-center justify-center w-[80%] h-[30%] mt-20 mr-16 border border-red-500">
+            
+              <div className="flex flex-col items-center justify-start w-[90%] h-[90%] border border-red-500 mr-16">
+                {/* Welcome Text */}
+                <div className="flex flex-col items-center justify-center w-[80%] h-[30%] mt-20 border border-red-500">
                   <h1 className="text-6xl font-bold text-gray-900 font-roboto drop-shadow-lg">
                     LocalPulse
                   </h1>
@@ -57,7 +58,9 @@ const Index = () => {
                   </p>
                 </div>
 
+                <div className="flex w-[60%] h-[6vh] bg-gray-900 opacity-90 rounded-lg"></div>
               </div>
+             
               
 
 

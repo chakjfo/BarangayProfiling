@@ -1,5 +1,5 @@
 import MagnifyingGlass from "../images/MagnifyingGlass.svg"
-import BackgroundImage from "../images/IndexBackground5.jpg";
+import BackgroundImage from "../images/IndexBackground6.jpg";
 
 const Index = () => {
   return (
@@ -17,7 +17,7 @@ const Index = () => {
           </div>
       </div>
       <div 
-        className="flex flex-col items-center justify-center w-screen h-[80vh] bg-cover bg-[position:center_90%]  bg-neutral-900"
+        className="flex flex-col items-center justify-center w-screen h-[80vh] bg-cover bg-[position:center_88%]  bg-neutral-900"
         style={{ backgroundImage: `url(${BackgroundImage})` }}>
       
         <div className="flex flex-row items-center justify-center h-[12%] w-full bg-gray-900 bg-opacity-45">
@@ -37,6 +37,7 @@ const Index = () => {
                 placeholder-white placeholder-opacity-40
                 focus:outline-none focus:border-b focus:border-white focus:ring-0 focus:border-opacity-100
                 hover:border-opacity-100"
+                autocomplete="off"
             />
           </div>
           <img src={MagnifyingGlass} alt="Search Icon" className="w-6 h-6 ml-3 mt-2" />
@@ -48,11 +49,11 @@ const Index = () => {
               {/* Welcome Text */}
               <div className="flex flex-col items-center justify-start w-[90%] h-[90%] border border-red-500">
                 <div className="flex flex-col items-center justify-center w-[80%] h-[30%] mt-20 mr-16 border border-red-500">
-                  <h1 className="text-6xl font-bold text-white font-roboto drop-shadow-lg">
+                  <h1 className="text-6xl font-bold text-gray-900 font-roboto drop-shadow-lg">
                     LocalPulse
                   </h1>
-                  <p className="text-sm text-white mr-4">
-                    Your trusted platform for barangay profiling.
+                  <p className="text-sm text-gray-900 mr-4">
+                    Davao's trusted platform for barangay profiling.
                   </p>
                 </div>
 
